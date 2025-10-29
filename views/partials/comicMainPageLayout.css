@@ -1,0 +1,44 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap'); */
+/* GLOBAL STYLE */
+.page-layout {
+  display: grid;
+  /* 6 rows of equal height */
+  gap: 10px;
+  padding: 20px;
+  background: #fff;
+  position: relative;
+  /* needed for absolute overlay */
+  height: 90dvh;
+  margin-top: 10dvh;
+}
+.panel {
+  background: #000;
+  border-radius:6px;
+  overflow:hidden;
+  font-family: "Comic Neue", cursive;
+  font-weight: 700;
+  font-style: bold;
+}
+video {
+  object-fit: cover;
+  height:105%;
+  width:105%;
+}
+img {
+  width:109%;
+  height:109%;
+  object-fit: cover;
+}
+
+.panel-text {
+    position:absolute;
+    font-size:1rem;
+    color:white;
+    /* text-shadow: #000 1px 1px 1px; */
+    background-color: #000;
+    border-radius: 2px;
+    padding:5px;
+    box-shadow: #000 2px 5px 5px;
+    top:5px;
+    left:5px;
+}

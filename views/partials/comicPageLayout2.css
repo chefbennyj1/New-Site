@@ -1,0 +1,21 @@
+.page-layout-2 {
+  
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+ 
+}
+
+/* Top row */
+.panel-1a { grid-row: 1 / 3; grid-column: 1 / 2; }
+.panel-1b { grid-row: 1 / 3; grid-column: 2 / 3; }
+/* .panel-1c { grid-row: 1; grid-column: 3; } */
+.panel-1c {
+  grid-row: 1 / span 4;  /* spans rows 1 & 3 */
+  grid-column: 3;
+}
+
+/* Middle row */
+.panel-2a { grid-row: 3 / 4; grid-column: 1 / 2; }
+.panel-2b { grid-row: 3 / 4; grid-column: 2 / 2; }
+
+

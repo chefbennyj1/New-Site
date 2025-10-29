@@ -1,0 +1,105 @@
+<aside class="sidebar">
+    <div class="logo">No//:Overflow</div>
+    <button class="sidebar-drawer-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 8V16" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path
+                d="M14.6 4H9.4C7.15979 4 6.03969 4 5.18404 4.43597C4.43139 4.81947 3.81947 5.43139 3.43597 6.18404C3 7.03969 3 8.15979 3 10.4V13.6C3 15.8402 3 16.9603 3.43597 17.816C3.81947 18.5686 4.43139 19.1805 5.18404 19.564C6.03969 20 7.15979 20 9.4 20H14.6C16.8402 20 17.9603 20 18.816 19.564C19.5686 19.1805 20.1805 18.5686 20.564 17.816C21 16.9603 21 15.8402 21 13.6V10.4C21 8.15979 21 7.03969 20.564 6.18404C20.1805 5.43139 19.5686 4.81947 18.816 4.43597C17.9603 4 16.8402 4 14.6 4Z"
+                stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </button>
+    <nav>
+        <ul>
+            <li data-page="library" class="active"><span>Library</span><ion-icon name="ellipsis-horizontal"></ion-icon></li>
+            <li data-page="create-new-volume"><span>Create New</span><ion-icon name="ellipsis-horizontal"></ion-icon></li>
+            <li data-page="account-settings"><span>Account</span><ion-icon name="ellipsis-horizontal"></ion-icon></li>
+        </ul>
+    </nav>
+    <div class="user">
+        <img src="/views/public/images/avatar.png" alt="Profile" class="avatar" />
+        <span id="user-name"></span>
+        <div class="dropdown" id="userMenu">
+            <a href="/dashboard/account">Account</a>
+            <form action="/authentication/logout" method="POST">
+                <button type="submit" id="logoutBtn">Logout</button>
+            </form>
+        </div>
+    </div>
+</aside>
+
+<main class="main-content">
+
+    <header class="topbar">
+        <!-- Search, profile pic, settings -->
+    </header>
+
+    <section class="account-settings" style="display:none">
+        <h3>Update Credentials</h3>
+
+        <form id="credentials" action="/api/user/update" method="POST">
+            <div class="input-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+                <span class="error-message"></span>
+            </div>
+
+            <div class="input-field">
+                <label for="currentPassword">Current Password</label>
+                <input type="password" id="currentPassword" name="currentPassword" required />
+                <span class="error-message"></span>
+            </div>
+
+            <div class="input-field">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" name="newPassword" required />
+                <span class="error-message"></span>
+            </div>
+
+            <div class="input-field">
+                <label for="confirmPassword">Confirm New Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required />
+                <span class="error-message"></span>
+            </div>
+
+            <button class="btn update__btn" type="submit">Update</button>
+        </form>
+    </section>
+
+    <section class="create-new-volume" style="display:none">
+         <h3>Create New Volume</h3>
+        <form id="volume-info" action="/api/volume/create" method="POST">
+            <div class="input-field">
+                <label for="index">Volume Index (0 -9)</label>
+                <input type="number" id="index" name="index" required />
+                <span class="error-message"></span>
+            </div>
+
+            <div class="input-field">
+                <label for="title">Title</label>
+                <input type="string" id="title" name="title" required />
+                <span class="error-message"></span>
+            </div>
+
+            <div class="input-field">
+                <label for="volumePath">Folder Path</label>
+                <input type="string" id="volumePath" name="volumePath" required />
+                <span class="error-message"></span>
+            </div>
+
+            <!-- <div class="input-field">
+                <label for="pages">Pages</label>
+                <input type="string" id="pages" name="pages" required />
+                <span class="error-message"></span>
+            </div> -->
+            
+
+            <button class="btn update__btn" type="submit">Create</button>
+
+        </form>
+    </section>
+
+    <section class="library">
+       <div class="row"></div>
+    </section>
+
+</main>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&display=swap"
+    rel="stylesheet">
+  <title>My Website</title>
+  <link rel="stylesheet" href="styles/page.css">
+</head>
+
+<body>
+  <header class="glass-container">
+    <div class="glass-filter"></div>
+    <div class="glass-overlay"></div>
+    <div class="glass-content">
+      <div class="logo-wrapper">
+        <div class="logo-container">
+          <div id="header-logo" data-text="NO//:OVERFLOW" class="">N0//:0VERFL0W</div>
+        </div>
+      </div>
+      <nav>
+        <!-- <ul class="nav--links">
+        <li>
+
+        </li>
+      </ul> -->
+      </nav>
+      <!-- <div class="btn get-started-btn" onclick="window.location.href='/login'"><span>Get Started</span></div> -->
+    </div>
+  </header>
+
+  <div id="loading-page">
+    <div class="initializing-text-container">
+      <div class="initializing-progress"></div>
+      <div class="initializing-text"></div>
+    </div>
+    <div class="checkbox-container">
+      <input type="checkbox" checked id="enable-audio-layer" />
+      <label for="checkbox">initialize audio layer</label>
+    </div>
+    <a id="enter-btn" href="" style="display:none">[ enter ]</a>
+  </div>
+
+  <canvas id="tube-cursor"></canvas>
+  <!-- <div class="scroll-wrapper"> -->
+  <section id="landing-page" class="landing-page scroll-section"></section>
+  <!--SECTION 1-->
+  <!-- <section id="section-one" class="section-one scroll-section"></section> -->
+
+  <!--SECTION 2-->
+  <!-- <section id="section-two" class="section-two scroll-section"></section> -->
+
+  <!--SECTION 3-->
+  <!-- <section id="section-three" class="section-three scroll-section"></section> -->
+
+  <!--SECTION 4-->
+  <!-- <section id="section-four" class="section-four scroll-section"></section> -->
+  <!-- </div> -->
+
+  <script type="module">
+
+    import { loadSection, loadCSS, loadScript } from "/scripts/pageLoader.js"
+
+    (async () => {
+
+      gsap.registerPlugin(
+        SplitText,
+        ScrambleTextPlugin,
+        CustomEase
+      );
+
+      await loadSection('landing-page', '/views/landingPage/landingPage.html');
+      
+      await loadCSS('/styles/button.css');
+      await loadScript("/scripts/button.js");
+      await loadCSS('/styles/tiltEffects.css');
+
+
+      //sections are loaded
+      //window.dispatchEvent(new CustomEvent('sectionsloadedcomplete', { detail: "" }));
+
+      // loading page elements
+      let loader = document.getElementById("loading-page");
+      let audioEnabledCheckbox = document.querySelector('#enable-audio-layer');
+      let enterBtn = loader.querySelector('#enter-btn');
+      const split = new SplitText(enterBtn, { type: "chars, words, lines" });
+
+      //global audio
+      window.transitionAudio = new Audio('/audio/transition_audio.mp3');
+      window.bgAudio = new Audio('/audio/background.mp3');
+      window.storyName = new Audio('/audio/no_overflow_hacker.mp3');
+
+      window.bgAudio.loop = true;
+
+      window.audioEnabled = audioEnabledCheckbox.checked;
+      //sav eot local storage so we can access it quickly form other ejs files.
+      //did the user want the audio.
+      localStorage.setItem('audioEnabled', window.audioEnabled);
+
+      audioEnabledCheckbox.addEventListener('change', () => {
+        window.audioEnabled = audioEnabledCheckbox.checked;
+        console.log(`transition audio ${window.enableAudio}.`);
+        localStorage.setItem('audioEnabled', window.audioEnabled);
+      });
+
+      //signal 'ready' n the loading page.
+      handleLoadingText(enterBtn);
+
+      // enterBtn.addEventListener('mouseenter', (e) => {
+      //   let orginalText = enterBtn.textContent;
+
+      //   gsap.to(enterBtn, {
+      //     duration: 1.2,
+      //     scrambleText: {
+      //       text: "[ enter ]",
+      //       chars: "",
+      //       speed: 0.4
+      //     },
+      //     ease: "none",
+      //   });
+
+      // });
+
+
+      enterBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        loader.style.display = "none";
+
+        const landingPage = document.querySelector('.landing-page');
+        landingPage.classList.add('active');
+
+        if (window.audioEnabled) {
+          window.bgAudio.play();
+          window.storyName.play();
+        }
+
+      })
+
+    })();
+
+    function handleLoadingText(enterBtn) {
+      let text = document.querySelector('.initializing-text');
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 }); // waits 2s before looping
+      // scramble to hacked text
+      tl.to(text, {
+        duration: 1.4,
+        yoyo: true,
+        scrambleText: {
+          text: "DECRYPTING...",
+          chars: "01@#█░▒▓<>$&",
+          speed: 1.4,
+        },
+        ease: "none"
+      })
+      tl.to(text, {
+        duration: 1.4,
+        delay: 1,
+        scrambleText: {
+          text: "ACCESSING...",
+          chars: "01@#█░▒▓<>$&",
+          speed: 1.4,
+        }
+      })
+      tl.play();
+      setTimeout(() => {
+        //"ACCESS GRANTED..." 
+        enterBtn.style.display = "block"; 
+        tl.kill();     
+        text.textContent = "ACCESS GRANTED";
+        text.style.color = "green";
+        gsap.from(text, {
+          duration: 1.4,
+          repeat: -1,
+          opacity: 0
+        })    
+        
+      }, 4600)
+
+      // let loadingText = document.querySelector('.loading-text');
+      // let texts = loadingText.querySelectorAll('span');
+
+      // texts[0].textContent = '';
+      // texts[1].textContent = '';
+      // texts[2].textContent = 'R';
+      // texts[3].textContent = 'E';
+      // texts[4].textContent = 'A';
+      // texts[5].textContent = 'D';
+      // texts[6].textContent = 'Y';
+      // texts[7].textContent = '';
+      // texts[8].textContent = '';
+
+      // texts.forEach(span => {
+      //   //span.style.animationPlayState = 'paused';
+      //   span.style.color = "green";
+      //   span.style.filter = "blur(0)";
+      // });
+    }
+  </script>
+
+
+  <!-- Icon Packages -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <!-- GSAP core -->
+  <script src="scripts/gsap/gsap.min.js"></script>
+  <script src="scripts/gsap/ScrambleTextPlugin.min.js"></script>
+
+
+  <!-- <script src="scripts/gsap/MotionPathHelper.min.js"></script> -->
+  <!-- <script src="scripts/gsap/MotionPathPlugin.min.js"></script> -->
+  <!-- <script src="scripts/gsap/MorphSVGPlugin.min.js"></script> -->
+  <!-- <script src="scripts/gsap/ScrollTrigger.min.js"></script> -->
+  <!-- ScrollSmoother requires ScrollTrigger -->
+  <!-- <script src="scripts/gsap/ScrollSmoother.min.js"></script> -->
+  <script src="scripts/gsap/SplitText.min.js"></script>
+
+  <script src="scripts/gsap/CustomEase.min.js"></script>
+
+  <!--Lenis smooth scrolling-->
+  <script src="scripts/lenis.min.js"></script>
+
+  <!-- JS files -->
+  <script src="scripts/SmoothScrollTransitions.js"></script>
+
+
+  <script>
+    (() => {
+      const canvas = document.getElementById('tube-cursor');
+      const ctx = canvas.getContext('2d');
+
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const points = [];        // trail points
+      const maxPoints = 30;     // length of the tube
+
+      let mouse = { x: width / 2, y: height / 2 };
+
+      window.addEventListener('mousemove', e => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        // add current mouse position as first point
+        points.unshift({ x: mouse.x, y: mouse.y });
+
+        // limit number of points
+        if (points.length > maxPoints) points.pop();
+
+        // draw tube
+        for (let i = 0; i < points.length - 1; i++) {
+          const p0 = points[i];
+          const p1 = points[i + 1];
+
+          const t = i / points.length;
+          const radius = lerp(10, 2, t); // thick to thin
+
+          ctx.beginPath();
+          ctx.moveTo(p0.x, p0.y);
+          ctx.lineTo(p1.x, p1.y);
+          ctx.strokeStyle = `hsla(${200 + t * 50}, 100%, 60%, ${1 - t})`; // cyan-blue gradient
+          ctx.lineWidth = radius;
+          ctx.shadowColor = `hsla(200,100%,70%,0.5)`;
+          ctx.shadowBlur = 8;
+          ctx.stroke();
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      draw();
+    })();
+  </script>
+</body>
+
+</html>

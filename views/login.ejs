@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&display=swap"
+    rel="stylesheet">
+  <title>Login</title>
+</head>
+
+<body>
+
+  <section id="login"></section>
+
+
+  <!-- JS -->
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  
+  <script type="module">
+
+    import { loadSection, loadCSS, loadScript } from "/scripts/pageLoader.js"
+
+    (async () => {
+
+      await loadSection('login', '/views/login/login.html');
+
+      await loadCSS('/styles/button.css');
+      await loadScript("/scripts/button.js");
+
+    })();
+
+  </script>
+
+</body>
+
+</html>

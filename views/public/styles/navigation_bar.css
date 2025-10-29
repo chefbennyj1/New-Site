@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body { 
+    display: flex;
+    justify-content: center;
+    min-height: 100dvh;
+    background-color: #f6f6f6;
+   
+}
+.drawer { 
+    position:fixed;
+    z-index:100;
+    top:5%;
+    left:2%;
+}
+.drawer .menu_toggle {
+    position:absolute;
+    left:79px;
+    top:45%;
+    transform: translateY(-50%);
+    height:50px;
+    width: 25px;
+    background:#fff;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    z-index:100;
+    cursor:pointer;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+.drawer .menu_toggle:before {
+    content:'';
+    position:absolute;
+    top:-12px;
+    left:0;
+    width:15px;
+    height:15px;
+    background: transparent;
+    border-bottom-left-radius: 15px;
+    box-shadow: -5px 2px #fff;
+    transition: 0.5s;
+}
+.drawer .menu_toggle:after {
+    content:'';
+    position:absolute;
+    bottom:-12px;
+    left:0;
+    width:15px;
+    height:15px;
+    background: transparent;
+    border-top-left-radius: 15px;
+    box-shadow: -5px -2px #fff;
+    transition: 0.5s;
+}
+.drawer .menu_toggle span {
+    position:relative;
+    left: -8px;
+    display: flex;
+    min-width:25px;
+    height:25px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+.drawer .menu_toggle span:before {
+    content:'';
+    position: absolute;
+    width:8px;
+    height:8px;
+    border-top:2px solid #379;
+    border-right:2px solid #379;
+    transform:rotate(45deg);
+    transition: 0.5s;
+}
+.drawer .navigation {
+    position: relative;   
+    width: 80px;
+    background: #fff;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    box-shadow: 20px 20px 50px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    transition:0.5s;
+    overflow:hidden;
+}
+.drawer .navigation .menu {
+    position:relative;
+    width:100%;
+    padding: 30px 10px;
+    transition:0.5s;
+
+}
+.drawer .navigation .menu li {
+    list-style: none;
+
+}
+.drawer .navigation .menu li a {
+    position:relative;
+    display:flex;
+    text-decoration: none;
+    color:#111;
+    border-radius: 30px;
+
+}
+.drawer .navigation .menu li a:hover {
+    background: #379;
+    color: #fff;
+
+}
+.drawer .navigation .menu li a .icon{
+    position:relative;
+    min-width: 60px;
+    height:60px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    top:9px;
+}
+.drawer .navigation .menu li a .text {
+    position:relative;
+    height:60px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25em;
+    margin: 10px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+.drawer .navigation.active {
+    
+    width: 300px;
+}
+
+.drawer .menu_toggle.active {
+    left:300px;
+}

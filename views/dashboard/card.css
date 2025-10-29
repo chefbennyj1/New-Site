@@ -1,0 +1,96 @@
+.volume-card {
+  position: relative;
+  width: 240px;
+  aspect-ratio: 9/16;
+  background: rgba(15, 15, 25, 0.85);
+  border: 2px solid rgba(255, 255, 255, 0.027);
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.volume-card img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.8) contrast(1.1);
+  transition: filter 0.3s ease;
+  pointer-events: none;;
+}
+
+.volume-card:hover img {
+  filter: brightness(1) contrast(1.2);
+}
+
+.volume-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+}
+
+/* Glowing overlay */
+.volume-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 0, 255, 0.1),
+    rgba(0, 255, 255, 0.1)
+  );
+  mix-blend-mode: overlay;
+}
+
+/* DIAGONAL TITLE BANNER */
+.volume-banner {
+  position: absolute;
+  top:30px;
+  left: -240px;
+  width: 250%;
+  transform: rotate(-40deg);
+  background: linear-gradient(90deg, rgba(0,255,255,0.8), rgba(255,0,255,0.8));
+  color: #fff;
+  text-align: center;
+  font-family: 'Consolas', monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 6px 0;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 10px rgba(0,255,255,0.3);
+  pointer-events: none;
+  z-index: 2;
+  pointer-events: none;;
+}
+
+/* Bottom info overlay (optional) */
+.volume-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: #fff;
+  font-family: 'Consolas', monospace;
+  backdrop-filter: blur(4px);
+  display:flex;
+  justify-content: center;
+  pointer-events: none;;
+}
+
+.volume-info h3 {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.5);
+  padding-bottom:15px;
+}
+
+.volume-banner {
+  animation: neonPulse 2s infinite alternate ease-in-out;
+}
+
+@keyframes neonPulse {
+  from { box-shadow: 0 0 10px rgba(0,255,255,0.2); }
+  to { box-shadow: 0 0 20px rgba(255,0,255,0.5); }
+}

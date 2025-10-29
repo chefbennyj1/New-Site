@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&display=swap"
+    rel="stylesheet">
+  <title>My Website</title>
+  <link rel="stylesheet" href="styles/page.css">
+</head>
+
+<body>
+  <header class="glass-container">
+    <div class="glass-filter"></div>
+    <div class="glass-overlay"></div>
+    <div class="glass-content">
+      <div class="logo-wrapper">
+        <div class="logo-container">
+          <div id="header-logo" data-text="NO//:OVERFLOW" class="">N0//:0VERFL0W</div>
+        </div>
+      </div>
+      <nav>
+        <!-- <ul class="nav--links">
+        <li>
+
+        </li>
+      </ul> -->
+      </nav>
+      <!-- <div class="btn get-started-btn" onclick="window.location.href='/login'"><span>Get Started</span></div> -->
+    </div>
+  </header>
+  <canvas id="tube-cursor"></canvas>
+  <div class="scroll-wrapper">
+
+
+    <!--SECTION 1-->
+    <!-- <section id="section-1" class="section-1 scroll-section"></section> -->
+
+    <!--SECTION 2-->
+    <!-- <section id="section-two" class="section-two scroll-section"></section> -->
+
+    <!--SECTION 3-->
+    <!-- <section id="section-three" class="section-three scroll-section"></section> -->
+
+    <!--SECTION 4-->
+    <!-- <section id="section-four" class="section-four scroll-section"></section> -->
+  </div>
+
+  <script type="module">
+    import { loadSection, loadCSS, loadScript } from "/scripts/pageLoader.js"
+    (async () => {
+      const params = new URLSearchParams(window.location.search);
+      const volumeId = params.get('id');
+      console.log(volumeId);
+
+      var volume = await getViewItemsById(volumeId);
+      const scrollWapper = document.querySelector('.scroll-wrapper')
+      volume.pages.forEach(async page => {
+
+        var section = document.createElement('section');
+
+        section.id = `section-${page.index}`;
+        section.classList.add(`section-${page.index}`);
+        section.classList.add("scroll-section");
+
+        scrollWapper.append(section);
+
+        await loadSection(`section-${page.index}`, page.path);
+
+      })
+      
+      
+      // await loadSection('section-two', '/partials/volume-1/section-two/section-two.html')
+      // await loadSection('section-three', '/partials/volume-1/section-three/section-three.html')
+      //await loadSection('section-four', '/partials/volume-1/section-four/section-four.html')
+// 
+      // await loadCSS('/styles/button.css'),
+      // await loadScript("/scripts/button.js");
+
+      //await loadCSS('/styles/tiltEffects.css');
+
+
+      //sections are loaded
+      window.dispatchEvent(new CustomEvent('sectionsloadedcomplete', { detail: "" }));
+
+        const section1 = document.querySelector('.section-1');
+        section1.classList.add('active');
+
+
+      // // loading page elements
+      // let loader = document.getElementById("loading-page");
+      // let audioEnabledCheckbox = document.querySelector('#enable-audio-layer');
+      // let enterBtn = loader.querySelector('#enter-btn');
+
+      // enterBtn.style.display = "block";
+
+      // //global audio
+      window.transitionAudio = new Audio('/audio/transition_audio.mp3');
+      window.bgAudio = new Audio('/audio/background.mp3');
+      // window.storyName = new Audio('/audio/no_overflow_hacker.mp3');
+
+      window.bgAudio.volume = 0.5;
+      window.bgAudio.loop = true;
+
+      // window.audioEnabled = audioEnabledCheckbox.checked;
+      // localStorage.setItem('audioEnabled', window.audioEnabled);
+      // audioEnabledCheckbox.addEventListener('change', () => {
+      //   window.audioEnabled = audioEnabledCheckbox.checked;
+      //   console.log(`transition audio ${window.enableAudio}.`);
+      //   localStorage.setItem('audioEnabled', window.audioEnabled);
+      // });
+
+      // //signal 'ready' n the loading page.
+      // handleLoadingText();
+
+      // enterBtn.addEventListener('click', (e) => {
+      //   e.preventDefault();
+
+      //   loader.style.display = "none";
+
+      //   const sectionOne = document.querySelector('.section-one');
+      //   sectionOne.classList.add('active');
+
+      //   if (window.audioEnabled) {
+      //     window.bgAudio.play();
+      //     window.storyName.play();
+      //   }
+
+      //   //Force play here because the sound effect 
+      //   //doesn't play in the section-one viewing evene the first time
+      //   //window.transitionAudio.play();
+
+      // })
+
+    })();
+
+
+    // async function loadSection(containerId, htmlPath) {
+    //   try {
+
+    //     // Load HTML
+    //     const response = await fetch(htmlPath);
+    //     const html = await response.text();
+    //     const container = document.getElementById(containerId);
+    //     container.innerHTML = html;
+
+    //     // Derive matching JS and CSS paths
+    //     const basePath = htmlPath.replace('.html', '');
+    //     const jsPath = `${basePath}.js`;
+    //     const cssPath = `${basePath}.css`;
+
+    //     // Load CSS dynamically (if not already loaded)
+    //     await loadCSS(cssPath);
+
+    //     // Dynamically import JS module
+    //     const module = await import(jsPath);
+
+    //     // Initialize section if it exports init()
+    //     if (module.init) module.init(container);
+
+    //     // Optional: Dispatch custom event for this section
+    //     document.dispatchEvent(new CustomEvent('sectionLoaded', { detail: { id: containerId } }));
+
+    //     console.log(`Loaded section: ${containerId}`);
+    //   } catch (err) {
+    //     console.error(`Error loading section ${containerId}:`, err);
+    //   }
+    // }
+
+    // // Helper function to load CSS dynamically
+    // async function loadCSS(href) {
+    //   // Prevent duplicates if the same stylesheet was already added
+    //   if ([...document.styleSheets].some(sheet => sheet.href && sheet.href.includes(href))) return;
+
+    //   return new Promise((resolve, reject) => {
+    //     const link = document.createElement('link');
+    //     link.rel = 'stylesheet';
+    //     link.href = href;
+    //     link.onload = resolve;
+    //     link.onerror = () => reject(new Error(`Failed to load CSS: ${href}`));
+    //     document.head.appendChild(link);
+    //   });
+    // }
+
+    // function loadScript(src) {
+    //   return new Promise((resolve, reject) => {
+    //     const script = document.createElement('script');
+    //     script.src = src;
+    //     script.type = 'module'; // use 'text/javascript' if not an ES module
+    //     script.onload = resolve;
+    //     script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+    //     document.body.appendChild(script);
+    //   });
+    // }
+
+    async function getViewItemsById(id) {
+        try {
+          const res = await fetch(`/api/volume/${id}`);
+          const data = await res.json();
+
+          if (!data.ok) {
+            console.error("Failed to load view:", data.message);
+            return;
+          }
+
+          console.log("View:", data.view);
+          return data.view; // <- your function to display them
+        } catch (err) {
+          console.error("Error fetching volumes:", err);
+        }
+      }
+ </script>
+
+
+  <!-- Icon Packages -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <!-- GSAP core -->
+  <script src="scripts/gsap/gsap.min.js"></script>
+
+  <script src="scripts/gsap/SplitText.min.js"></script>
+
+  <script src="scripts/gsap/CustomEase.min.js"></script>
+
+  <!--Lenis smooth scrolling-->
+  <script src="scripts/lenis.min.js"></script>
+
+  <!-- JS files -->
+  <script src="scripts/SmoothScrollTransitions.js"></script>
+
+
+  <script>
+    (() => {
+      const canvas = document.getElementById('tube-cursor');
+      const ctx = canvas.getContext('2d');
+
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const points = [];        // trail points
+      const maxPoints = 30;     // length of the tube
+
+      let mouse = { x: width / 2, y: height / 2 };
+
+      window.addEventListener('mousemove', e => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        // add current mouse position as first point
+        points.unshift({ x: mouse.x, y: mouse.y });
+
+        // limit number of points
+        if (points.length > maxPoints) points.pop();
+
+        // draw tube
+        for (let i = 0; i < points.length - 1; i++) {
+          const p0 = points[i];
+          const p1 = points[i + 1];
+
+          const t = i / points.length;
+          const radius = lerp(10, 2, t); // thick to thin
+
+          ctx.beginPath();
+          ctx.moveTo(p0.x, p0.y);
+          ctx.lineTo(p1.x, p1.y);
+          ctx.strokeStyle = `hsla(${200 + t * 50}, 100%, 60%, ${1 - t})`; // cyan-blue gradient
+          ctx.lineWidth = radius;
+          ctx.shadowColor = `hsla(200,100%,70%,0.5)`;
+          ctx.shadowBlur = 8;
+          ctx.stroke();
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      draw();
+    })();
+  </script>
+</body>
+
+</html>
