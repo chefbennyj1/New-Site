@@ -19,6 +19,7 @@ const siteRoutes = require("./routes/routes.js");
 const authRoutes = require("./authentication/authentication.js");
 const apiRoutes = require("./api/api.js");
 
+const VolumeSync = require("./services/VolumeSync.js")
 
 
 mongoose.connect(mongoDbURI, {
@@ -67,70 +68,6 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
-// handle serving and caching images
-app.get('/images/volumes/*path', async (req, res) => {
-  //req.params return an array of folder and file ['volume-1", "file.png"]
-  //we have to join them togethe rot create a path;
-  let imagePath = req.params.path.join('/');
-  try {
-    // Full file path, e.g. "volume-1/images/character.png"
-    const filePath = path.join(__dirname, 'views/partials/', imagePath);
-
-    // Ensure the file exists
-    if (!fs.existsSync(filePath)) {
-      return res.status(404).send('Image not found');
-    }
-    
-    // Parse resize width if provided
-    const resizeWidth = parseInt(req.query.resize, 10);
-    const type = mime.lookup(filePath) || 'image/png';
-
-    res.type(type);
-
-    // If resize is requested
-    if (resizeWidth && !isNaN(resizeWidth)) {
-      const cacheDir = path.join(__dirname, 'cache');
-      if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir);
-
-      const cacheFile = path.join(cacheDir, `${resizeWidth}_${path.basename(filePath)}`);
-
-      // Check cache first
-      if (fs.existsSync(cacheFile)) {
-        return res.sendFile(cacheFile);
-      }
-
-      // Resize and save to cache
-      await sharp(filePath)
-        .resize({ width: resizeWidth })
-        .toFile(cacheFile);
-
-      return res.sendFile(cacheFile);
-    }
-
-    // No resize — send original
-    res.sendFile(filePath);
-
-  } catch (err) {
-    console.error('Error serving image:', err);
-    res.status(500).send('Internal Server Error');
-  }
-});
-
-
-// Serve images from public with correct MIME type
-app.get("/images/public/:file", (req, res) => {
-  const filePath = path.join(__dirname, "views/public/images", req.params.file);
-  res.type("image/png");   // <-- forces correct MIME type
-  res.sendFile(filePath);
-});
-
-// Serve public videos with correct MIME type
-app.get("/videos/public/:file", (req, res) => {
-  const filePath = path.join(__dirname, "views/public/videos", req.params.file);
-  res.type("video/mp4");   // <-- forces correct MIME type
-  res.sendFile(filePath);
-});
-
 app.get("/viewer", (req, res) => {
    if (!req.session.isAuth) {
      res.redirect('/login');
@@ -170,3 +107,9 @@ const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Website running on http://localhost:${PORT}`);
 });
+
+VolumeSync.updateVolumesFromFS();
+// Optionally, schedule updates every 5 minutes
+setInterval(() => {
+  VolumeSync.updateVolumesFromFS();
+}, 5 * 60 * 1000);

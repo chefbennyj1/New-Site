@@ -11,7 +11,7 @@ async function updateVolumesFromFS() {
     const updatedVol = await VolumeManager.populatePagesFromFS(vol);
 
     // Save changes to MongoDB
-    await vol.save();
+    await updatedVol.save();
 
     console.log(`Updated volume ${vol.title} with ${vol.pages.length} pages`);
   }

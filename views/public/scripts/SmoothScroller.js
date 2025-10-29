@@ -65,5 +65,8 @@ class SmoothScroller {
     requestAnimationFrame(this.raf.bind(this));
   }
 }
-
+document.addEventListener('DOMContentLoaded', () => {                                                                                                                               
+  window.addEventListener('sectionsloadedcomplete', () => {                                                                                                                      
+       new SmoothScroller();                                                                                                                                                              });                                                                                                                                                                            
+  });
 export default SmoothScroller;

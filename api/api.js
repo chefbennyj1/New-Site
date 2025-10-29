@@ -1,6 +1,7 @@
 //API ENDPOINTS
 const express = require("express");
 const router = express.Router();
+const path = require('path');
 //USER SCHEMA
 const UserModel = require('../models/User.js');
 //VOLUMES SCHEMA
@@ -83,7 +84,6 @@ router.get('/volume/:id', async (req, res) => {
   res.json({ ok: true, view });
 
 });
-
 //get All Volumes
 router.get('/volumes', async (req, res) => {
   // Ensure the user is authenticated
@@ -102,6 +102,80 @@ router.get('/volumes', async (req, res) => {
     console.error("Error fetching volumes:", err);
     res.status(500).json({ ok: false, message: "Server error" });
   }
+});
+
+
+//MEDIA
+// handle serving and caching images
+router.get('/images/volumes/*path', async (req, res) => {
+  //req.params return an array of folder and file ['volume-1", "file.png"]
+  //we have to join them togethe rot create a path;
+  let imagePath = req.params.path.join('/');
+  try {
+    // Full file path, e.g. "volume-1/images/character.png"
+    var root = path.join(__dirname, "..");
+    const filePath = path.join(root, 'views/partials/', imagePath);
+
+    // Ensure the file exists
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).send('Image not found');
+    }
+    
+    // Parse resize width if provided
+    const resizeWidth = parseInt(req.query.resize, 10);
+    const type = mime.lookup(filePath) || 'image/png';
+
+    res.type(type);
+
+    // If resize is requested
+    if (resizeWidth && !isNaN(resizeWidth)) {
+      const cacheDir = path.join(__dirname, 'cache');
+      if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir);
+
+      const cacheFile = path.join(cacheDir, `${resizeWidth}_${path.basename(filePath)}`);
+
+      // Check cache first
+      if (fs.existsSync(cacheFile)) {
+        return res.sendFile(cacheFile);
+      }
+
+      // Resize and save to cache
+      await sharp(filePath)
+        .resize({ width: resizeWidth })
+        .toFile(cacheFile);
+
+      return res.sendFile(cacheFile);
+    }
+
+    // No resize — send original
+    res.sendFile(filePath);
+
+  } catch (err) {
+    console.error('Error serving image:', err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+// Serve images from public with correct MIME type
+router.get("/images/:volume/:page/assets/:file", (req, res) => {
+  var volume =  req.params.volume;
+  var page =  req.params.page;
+   var root = path.join(__dirname, "..");
+  const filePath = path.join(root, "views", "partials", volume, "pages", page, "assets", req.params.file);
+  console.log(filePath)
+  res.type("image/png");   // <-- forces correct MIME type
+  res.sendFile(filePath);
+});
+
+// Serve public videos with correct MIME type
+router.get("/videos/:volume/:page/assets/:file", (req, res) => {
+  var volume =  req.params.volume;
+  var page =  req.params.page;
+   var root = path.join(__dirname, "..");
+  const filePath = path.join(root, "views", "partials", volume, "pages", page, "assets", req.params.file);
+  console.log(filePath)
+  res.type("video/mp4");   // <-- forces correct MIME type
+  res.sendFile(filePath);
 });
 
 
