@@ -24,7 +24,17 @@ router.get("/", (req, res) => {
 
 //DASHBOARD
 router.get('/dashboard', isAuth, async (req, res) => {
-  const user = await UserModel.findById(req.session._id);
+  let user;
+  try {
+
+    user = await UserModel.findById(req.session._id);
+
+  } catch(err) { 
+
+    res.redirect('/login');
+
+  }
+  
   res.render('dashboard', { user: user });
 })
 
@@ -32,12 +42,6 @@ router.get('/dashboard', isAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   res.render("login");
 })
-
-//VOLUME - LAYOUT
-router.get('/index', (req, res) => {
-  res.render('index', {sections:{ 1: "Section-1", 2: "Section-2"}})
-})
-
 
 
 

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express'); //server
 const bcrypt = require('bcryptjs'); //password encryption
 const path = require('path'); //files paths
@@ -34,7 +35,7 @@ const store = new MongoDbSession({
 
 //set up sessions
 app.use(session({
-  secret: "key to sign the cookie",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   store: store
