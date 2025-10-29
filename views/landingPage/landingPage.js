@@ -284,8 +284,11 @@ function renderSphere() {
   });
 }
 
-
-
-
-
-
+document.addEventListener("visibilitychange", () => {
+  const video = document.getElementById("hero-video");
+  if (document.hidden) {
+    video.pause();
+  } else {
+    video.play();
+  }
+});
