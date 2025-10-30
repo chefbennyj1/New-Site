@@ -3,12 +3,11 @@ class TextBlock {
     this.container = container;
     this.options = {
       text: '',
-      textColor: 'white',
-      fill: 'white',      
-      stroke: 'black',
-      strokeWidth: 2,
-      paddingX: 20, // Padding around text
-      paddingY: 20, // Padding around text
+      textColor:'white',
+      background: 'white',
+      borderColor: 'black',
+      borderWidth: 2,
+      padding: "20px", // Padding around text      
       // Add more options here as needed
       ...options
     };
@@ -29,26 +28,30 @@ class TextBlock {
   _getBubbleHtml(width, height) {
     const pathD = this._generatePathD(width, height);
     return `
-      <div class="text-block">
-        <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
-          <rect class="text-block-shape"
-            x="0" y="0" width="${width}" height="${height}"
-            fill="${this.options.fill}" stroke="${this.options.stroke}" stroke-width="${this.options.strokeWidth}"/>
-          <foreignObject x="${this.options.paddingX}" y="${this.options.paddingY}" width="${width - (2 * this.options.paddingX)}" height="${height - (2 * this.options.paddingY)}">
-            <div xmlns="http://www.w3.org/1999/xhtml" class="text-block-text">
-              ${this.options.text}
-            </div>
-          </foreignObject>
-        </svg>
-      </div>
-    `;
+       <div class="text-block" style="box-shadow: rgba(0,0,0,0.9) 6px 6px 10px; color: ${this.options.textColor}; background: ${this.options.background}; padding: ${this.options.padding}px; border: solid 2px ${this.options.borderColor}">
+          ${this.options.text}
+       </div>
+    `
+    // return `
+    //   <div class="text-block">
+    //     <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
+    //       <rect class="text-block-shape"
+    //         x="0" y="0" width="${width}" height="${height}"
+    //         fill="${this.options.fill}" stroke="${this.options.stroke}" stroke-width="${this.options.strokeWidth}"/>
+    //       <foreignObject x="${this.options.paddingX}" y="${this.options.paddingY}" width="${width - (2 * this.options.paddingX)}" height="${height - (2 * this.options.paddingY)}">
+    //         <div xmlns="http://www.w3.org/1999/xhtml" class="text-block-text">
+    //           ${this.options.text}
+    //         </div>
+    //       </foreignObject>
+    //     </svg>
+    //   </div>
+    // `;
   }
 
   _fitBubbleToText() {
     if (!this.svgElement || !this.textElement) return;
 
     const textBBox = this.textElement.getBoundingClientRect();
-   
     const contentWidth = textBBox.width;
     const contentHeight = textBBox.height;
 
@@ -73,14 +76,13 @@ class TextBlock {
 
   render() {
     // Initial render with placeholder dimensions, then fit to text
-    this.container.innerHTML = this._getBubbleHtml(100, 1000); // Placeholder size
-    this.svgElement = this.container.querySelector('svg');
-    
-    this.textElement = this.container.querySelector('.text-block-text');
-    this.textElement.style.display = "inline-block";
-    this.textElement.style.whiteSpace = "nowrap";
-    this.textElement.style.color = this.options.textColor;
-    this._fitBubbleToText();
+    this.container.innerHTML = this._getBubbleHtml(120, 250); // Placeholder size
+    // this.svgElement = this.container.querySelector('svg');
+    // this.textElement = this.container.querySelector('.text-block-text');
+    // this.textElement.style.color = this.options.textColor;
+    // this.textElement.style.whiteSpace = "nowrap";
+    // // Wait one frame for DOM to paint, then measure
+    // requestAnimationFrame(() => this._fitBubbleToText());
   }
 
   updateText(newText) {

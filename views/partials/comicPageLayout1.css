@@ -60,7 +60,7 @@
 @media (max-width: 1200px) {
   .page-layout-1 .panel.split-left,
   .page-layout-1 .panel.split-right {    
-    width: calc(100vw - 40.5vw);
+    width: calc(100vw - 39vw);
   }
   .page-layout-1 .panel.vertical {
     right: 86px;

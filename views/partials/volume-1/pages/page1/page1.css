@@ -2,28 +2,43 @@
 
 @import url(../../../comicPageLayout1.css);
 
-.text-block {
-   position:absolute;
-   z-index: 4;
+.text-block-container {
+  position: absolute;
+  z-index: 4;
+  display: inline-block;
+  overflow: visible;
+  width: auto;           /* ensure it shrinks to text */  
+  box-sizing: border-box;
+  text-wrap:pretty;
+
 }
 .text-block-city-name {   
     top:15px;
-    left:15px;    
+    left:15px; 
 }
 .text-block-nova-name {
-    top: 15vh;
-    left: 66vw;    
+    top: 25vh;
+    right: 20vw; 
+    white-space: wrap;   
+}
+.text-block-nova-profession {
+    top: 35vh;
+    left:65vw;
 }
 .text-block-story-line-intro-nova-1 {
-    bottom: 40vh;
+    bottom: 35vh;
     left: 10vw;
 }
 .text-block-story-line-intro-nova-2 {
-   bottom: 12vh;
-   left: 45vw;
+   bottom: 18vh;
+   left: 25vw;
+}
+.text-block-story-line-intro-nova-3 {
+    bottom: 53px;
+    right: 70px;
 }
 
-@media (min-width: 1025px) {
+@media (max-width > 1025px) {
    .text-block-nova-name {
     top: 15vh;
     left: 76vw;    
