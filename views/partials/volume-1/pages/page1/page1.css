@@ -1,3 +1,31 @@
 @import url(./../../../comicMainPageLayout.css);
 
 @import url(../../../comicPageLayout1.css);
+
+.text-block {
+   position:absolute;
+   z-index: 4;
+}
+.text-block-city-name {   
+    top:15px;
+    left:15px;    
+}
+.text-block-nova-name {
+    top: 15vh;
+    left: 66vw;    
+}
+.text-block-story-line-intro-nova-1 {
+    bottom: 40vh;
+    left: 10vw;
+}
+.text-block-story-line-intro-nova-2 {
+   bottom: 12vh;
+   left: 45vw;
+}
+
+@media (min-width: 1025px) {
+   .text-block-nova-name {
+    top: 15vh;
+    left: 76vw;    
+}
+}

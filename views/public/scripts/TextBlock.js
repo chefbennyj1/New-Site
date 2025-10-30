@@ -3,7 +3,8 @@ class TextBlock {
     this.container = container;
     this.options = {
       text: '',
-      fill: 'white',
+      textColor: 'white',
+      fill: 'white',      
       stroke: 'black',
       strokeWidth: 2,
       paddingX: 20, // Padding around text
@@ -47,6 +48,7 @@ class TextBlock {
     if (!this.svgElement || !this.textElement) return;
 
     const textBBox = this.textElement.getBoundingClientRect();
+   
     const contentWidth = textBBox.width;
     const contentHeight = textBBox.height;
 
@@ -71,9 +73,13 @@ class TextBlock {
 
   render() {
     // Initial render with placeholder dimensions, then fit to text
-    this.container.innerHTML = this._getBubbleHtml(100, 50); // Placeholder size
+    this.container.innerHTML = this._getBubbleHtml(100, 1000); // Placeholder size
     this.svgElement = this.container.querySelector('svg');
+    
     this.textElement = this.container.querySelector('.text-block-text');
+    this.textElement.style.display = "inline-block";
+    this.textElement.style.whiteSpace = "nowrap";
+    this.textElement.style.color = this.options.textColor;
     this._fitBubbleToText();
   }
 
