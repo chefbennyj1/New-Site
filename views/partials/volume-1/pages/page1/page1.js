@@ -3,14 +3,16 @@ import { initPageTiltEffects } from '/scripts/tiltEffect.js';
 import { initParallaxEffects } from '/scripts/parallax.js';
 import TextBlock from '/scripts/TextBlock.js';
 
-export function init(container) { 
+
+export function init(container) {
 
     const textBlockCityNameContainer = document.querySelector('.text-block-city-name');
-    const textBlockNovaNameContainer = document.querySelector('.text-block-nova-name');
-    const textBlockNovaProfessionContainer = document.querySelector('.text-block-nova-profession');
-    const textBlockStorylineNovaIntroContianer1 = document.querySelector('.text-block-story-line-intro-nova-1');
-    const textBlockStorylineNovaIntroContianer2 = document.querySelector('.text-block-story-line-intro-nova-2');
-    const textBlockStorylineNovaIntroContainer3 = document.querySelector('.text-block-story-line-intro-nova-3');
+    // const textBlockNovaNameContainer = document.querySelector('.text-block-nova-name');
+    // const textBlockNovaProfessionContainer = document.querySelector('.text-block-nova-profession');
+    const textBlockStorylineIntroContianer1 = document.querySelector('.text-block-story-line-intro-1');
+    const textBlockStorylineIntroContianer2 = document.querySelector('.text-block-story-line-intro-2');
+    const textBlockStorylineIntroContainer3 = document.querySelector('.text-block-story-line-intro-3');
+    const textBlockStorylineIntroContainer4 = document.querySelector('.text-block-story-line-intro-4');
 
     const cityNameTextBlock = new TextBlock(textBlockCityNameContainer, {
         text: 'New Kyoto City',
@@ -21,45 +23,54 @@ export function init(container) {
         padding: 15
     });
 
-    const novaNameTextBlock = new TextBlock(textBlockNovaNameContainer, {
-        text: 'Nova',
-        textColor: "white",
-        background: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
-        borderColor: 'white',
-        borderwidth: 2,
-        padding: 15
-    });
+    // const novaNameTextBlock = new TextBlock(textBlockNovaNameContainer, {
+    //     text: 'Nova',
+    //     textColor: "white",
+    //     background: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
+    //     borderColor: 'white',
+    //     borderwidth: 2,
+    //     padding: 15
+    // });
 
-    const novaProfessionTextBlock = new TextBlock(textBlockNovaProfessionContainer, {
-        text: 'Programmer by trade, problem by nature',
-        textColor: "white",
-        background: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
-        borderColor: 'white',
-        borderwidth: 2,
-        padding: 15
-    });
+    // const novaProfessionTextBlock = new TextBlock(textBlockNovaProfessionContainer, {
+    //     text: 'Programmer by trade, problem by nature',
+    //     textColor: "white",
+    //     background: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
+    //     borderColor: 'white',
+    //     borderwidth: 2,
+    //     padding: 15
+    // });
 
-    const storylineNoveIntroTextBlock1 = new TextBlock(textBlockStorylineNovaIntroContianer1, {
+    const storylineIntroTextBlock1 = new TextBlock(textBlockStorylineIntroContianer1, {
         text: 'In the part of the city everyone forgets to look — ',
-        textColor:'#000',
+        textColor: '#000',
         background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
         borderColor: 'white',
         borderwidth: 2,
         padding: 15
     })
 
-    const storylineNoveIntroTextBlock2 = new TextBlock(textBlockStorylineNovaIntroContianer2, {
-        text: '— the cracked edges between the neon towers and the subway dust,',
-        textColor:'#000',
+    const storylineIntroTextBlock2 = new TextBlock(textBlockStorylineIntroContianer2, {
+        text: '— above a noodle shop that never closes — ',
+        textColor: '#000',
         background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
         borderColor: 'white',
         borderwidth: 2,
         padding: 15
     })
 
-    const storylineNoveIntroTextBlock3 = new TextBlock(textBlockStorylineNovaIntroContainer3, {
-        text: 'above a noodle shop that never closes, lives Nova...',
-        textColor:'#000',
+    const storylineIntroTextBlock3 = new TextBlock(textBlockStorylineIntroContainer3, {
+        text: ' — lives a group of outsiders, unlikely heros...',
+        textColor: '#000',
+        background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
+        borderColor: 'white',
+        borderwidth: 2,
+        padding: 15
+    })
+
+    const storylineIntroTextBlock4 = new TextBlock(textBlockStorylineIntroContainer4, {
+        text: '...about to stumble on something that none of them are ready for.',
+        textColor: '#000',
         background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
         borderColor: 'white',
         borderwidth: 2,
@@ -68,32 +79,29 @@ export function init(container) {
 
     let videos = container.querySelectorAll('video[data-src]');
     enableMedia(videos);
-
+    
     cityNameTextBlock.render();
-    novaNameTextBlock.render();
-    novaProfessionTextBlock.render();
-    storylineNoveIntroTextBlock1.render();
-    storylineNoveIntroTextBlock2.render();
-    storylineNoveIntroTextBlock3.render();
-    container.addEventListener('view_visible',() => {
+    storylineIntroTextBlock1.render();
+    storylineIntroTextBlock2.render();
+    storylineIntroTextBlock3.render();
+    storylineIntroTextBlock4.render();
+
+    container.addEventListener('view_visible', () => {
 
         enableMedia(videos);
-        cityNameTextBlock.render();
-        novaNameTextBlock.render();
-        storylineNoveIntroTextBlock1.render();
-        storylineNoveIntroTextBlock2.render();
+        
 
     })
-    container.addEventListener('view_hidden',() => {
-        
+    container.addEventListener('view_hidden', () => {
+
         videos.forEach(video => {
-            video.pause();           
+            video.pause();
             video.currentTime = 0;
             console.log(`pausing video: ${video.src}`)
         });
 
     });
-    
+
     console.log(`loading ${container.id}`)
     const character_1 = container.querySelector('.parallax-scene-character-1');
     //renderLiquidBackground();
@@ -124,14 +132,18 @@ function enableMedia(videos) {
 }
 
 document.addEventListener("visibilitychange", () => {
-  const videos = document.querySelectorAll('video');
-  videos.forEach(video => {
-    if (document.hidden) {
-      video.pause();
-    } else {
-      video.play();
-    }
-  });
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+        if (document.hidden) {
+            video.pause();
+        } else {
+            video.play();
+        }
+    });
 });
+
+
+
+
 
 

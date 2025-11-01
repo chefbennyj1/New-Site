@@ -34,10 +34,13 @@
       <!-- <div class="btn get-started-btn" onclick="window.location.href='/login'"><span>Get Started</span></div> -->
     </div>
   </header>
+  
   <canvas id="tube-cursor"></canvas>
-  <div class="scroll-wrapper">
-  </div>
 
+  <div class="scroll-wrapper"></div>
+ 
+
+  <!-- PAGELOADER -->
   <script type="module">
     import { loadSection, loadCSS, loadScript } from "/scripts/pageLoader.js"
     (async () => {
@@ -60,148 +63,34 @@
         await loadSection(`section-${page.index}`, page.path);
 
       })
-      
-      
-      // await loadSection('section-two', '/partials/volume-1/section-two/section-two.html')
-      // await loadSection('section-three', '/partials/volume-1/section-three/section-three.html')
-      //await loadSection('section-four', '/partials/volume-1/section-four/section-four.html')
-// 
-      // await loadCSS('/styles/button.css'),
-      // await loadScript("/scripts/button.js");
-
-      //await loadCSS('/styles/tiltEffects.css');
-
 
       //sections are loaded
       window.dispatchEvent(new CustomEvent('sectionsloadedcomplete', { detail: "" }));
 
-        const section1 = document.querySelector('.section-1');
-        section1.classList.add('active');
+            const section1 = document.querySelector('.section-1');
+            section1.classList.add('active');
+            //new SmoothScroller({ sectionSelector: '.scroll-section' });
+      
+          })();
 
-
-      // // loading page elements
-      // let loader = document.getElementById("loading-page");
-      // let audioEnabledCheckbox = document.querySelector('#enable-audio-layer');
-      // let enterBtn = loader.querySelector('#enter-btn');
-
-      // enterBtn.style.display = "block";
-
-      // //global audio
-      window.transitionAudio = new Audio('/audio/transition_audio.mp3');
-      window.bgAudio = new Audio('/audio/background.mp3');
-      // window.storyName = new Audio('/audio/no_overflow_hacker.mp3');
-
-      window.bgAudio.volume = 0.5;
-      window.bgAudio.loop = true;
-
-      // window.audioEnabled = audioEnabledCheckbox.checked;
-      // localStorage.setItem('audioEnabled', window.audioEnabled);
-      // audioEnabledCheckbox.addEventListener('change', () => {
-      //   window.audioEnabled = audioEnabledCheckbox.checked;
-      //   console.log(`transition audio ${window.enableAudio}.`);
-      //   localStorage.setItem('audioEnabled', window.audioEnabled);
-      // });
-
-      // //signal 'ready' n the loading page.
-      // handleLoadingText();
-
-      // enterBtn.addEventListener('click', (e) => {
-      //   e.preventDefault();
-
-      //   loader.style.display = "none";
-
-      //   const sectionOne = document.querySelector('.section-one');
-      //   sectionOne.classList.add('active');
-
-      //   if (window.audioEnabled) {
-      //     window.bgAudio.play();
-      //     window.storyName.play();
-      //   }
-
-      //   //Force play here because the sound effect 
-      //   //doesn't play in the section-one viewing evene the first time
-      //   //window.transitionAudio.play();
-
-      // })
-
-    })();
-
-
-    // async function loadSection(containerId, htmlPath) {
-    //   try {
-
-    //     // Load HTML
-    //     const response = await fetch(htmlPath);
-    //     const html = await response.text();
-    //     const container = document.getElementById(containerId);
-    //     container.innerHTML = html;
-
-    //     // Derive matching JS and CSS paths
-    //     const basePath = htmlPath.replace('.html', '');
-    //     const jsPath = `${basePath}.js`;
-    //     const cssPath = `${basePath}.css`;
-
-    //     // Load CSS dynamically (if not already loaded)
-    //     await loadCSS(cssPath);
-
-    //     // Dynamically import JS module
-    //     const module = await import(jsPath);
-
-    //     // Initialize section if it exports init()
-    //     if (module.init) module.init(container);
-
-    //     // Optional: Dispatch custom event for this section
-    //     document.dispatchEvent(new CustomEvent('sectionLoaded', { detail: { id: containerId } }));
-
-    //     console.log(`Loaded section: ${containerId}`);
-    //   } catch (err) {
-    //     console.error(`Error loading section ${containerId}:`, err);
-    //   }
-    // }
-
-    // // Helper function to load CSS dynamically
-    // async function loadCSS(href) {
-    //   // Prevent duplicates if the same stylesheet was already added
-    //   if ([...document.styleSheets].some(sheet => sheet.href && sheet.href.includes(href))) return;
-
-    //   return new Promise((resolve, reject) => {
-    //     const link = document.createElement('link');
-    //     link.rel = 'stylesheet';
-    //     link.href = href;
-    //     link.onload = resolve;
-    //     link.onerror = () => reject(new Error(`Failed to load CSS: ${href}`));
-    //     document.head.appendChild(link);
-    //   });
-    // }
-
-    // function loadScript(src) {
-    //   return new Promise((resolve, reject) => {
-    //     const script = document.createElement('script');
-    //     script.src = src;
-    //     script.type = 'module'; // use 'text/javascript' if not an ES module
-    //     script.onload = resolve;
-    //     script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
-    //     document.body.appendChild(script);
-    //   });
-    // }
-
+    
     async function getViewItemsById(id) {
-        try {
-          const res = await fetch(`/api/volume/${id}`);
-          const data = await res.json();
+      try {
+        const res = await fetch(`/api/volume/${id}`);
+        const data = await res.json();
 
-          if (!data.ok) {
-            console.error("Failed to load view:", data.message);
-            return;
-          }
-
-          console.log("View:", data.view);
-          return data.view; // <- your function to display them
-        } catch (err) {
-          console.error("Error fetching volumes:", err);
+        if (!data.ok) {
+          console.error("Failed to load view:", data.message);
+          return;
         }
+
+        console.log("View:", data.view);
+        return data.view; // <- your function to display them
+      } catch (err) {
+        console.error("Error fetching volumes:", err);
       }
- </script>
+    }
+  </script>
 
 
   <!-- Icon Packages -->

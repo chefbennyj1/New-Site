@@ -16,26 +16,30 @@
     top:15px;
     left:15px; 
 }
-.text-block-nova-name {
-    top: 25vh;
-    right: 20vw; 
-    white-space: wrap;   
+/* .text-block-nova-name { */
+    /* top: 25vh; */
+    /* right: 20vw;  */
+    /* white-space: wrap;    */
+/* } */
+/* .text-block-nova-profession { */
+    /* top: 35vh; */
+    /* left:65vw; */
+/* } */
+.text-block-story-line-intro-1 {
+    top: 10vh;
+    left: 20vw;
 }
-.text-block-nova-profession {
-    top: 35vh;
-    left:65vw;
+.text-block-story-line-intro-2 {
+   top: 25vh;
+   right: 25vw;
 }
-.text-block-story-line-intro-nova-1 {
-    bottom: 35vh;
-    left: 10vw;
+.text-block-story-line-intro-3 {
+    top: 47vh;
+    right: 35vw;
 }
-.text-block-story-line-intro-nova-2 {
-   bottom: 18vh;
-   left: 25vw;
-}
-.text-block-story-line-intro-nova-3 {
-    bottom: 53px;
-    right: 70px;
+.text-block-story-line-intro-4 {
+    bottom: 5vh;
+    right: 10vw;
 }
 
 @media (max-width > 1025px) {
@@ -44,3 +48,4 @@
     left: 76vw;    
 }
 }
+
