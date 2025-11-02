@@ -25,24 +25,6 @@ export function init(container) {
         padding: 15
     });
 
-    // const novaNameTextBlock = new TextBlock(textBlockNovaNameContainer, {
-    //     text: 'Nova',
-    //     textColor: "white",
-    //     background: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
-    //     borderColor: 'white',
-    //     borderwidth: 2,
-    //     padding: 15
-    // });
-
-    // const novaProfessionTextBlock = new TextBlock(textBlockNovaProfessionContainer, {
-    //     text: 'Programmer by trade, problem by nature',
-    //     textColor: "white",
-    //     background: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
-    //     borderColor: 'white',
-    //     borderwidth: 2,
-    //     padding: 15
-    // });
-
     const storylineIntroTextBlock1 = new TextBlock(textBlockStorylineIntroContianer1, {
         text: 'In the part of the city everyone forgets to look — ',
         textColor: '#000',
@@ -71,7 +53,7 @@ export function init(container) {
     })
 
     const storylineIntroTextBlock4 = new TextBlock(textBlockStorylineIntroContainer4, {
-        text: '...about to stumble on something that none of them are ready for.',
+        text: 'standing on the edge of something far bigger than they can imagine. <br/> Not destiny. Not fate. Just bad timing… and worse luck.',
         textColor: '#000',
         background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
         borderColor: 'white',

@@ -3,7 +3,7 @@
 :root {
   --text-block-yellow: rgba(232, 185, 49, 0.9);
   --text-block-white: rgba(255,255,255,0.7);
-  --speech-bubble-white: rgba(255,255,255,0.5);
+  --speech-bubble-white: rgba(255,255,255,0.7);
 }
 
 /* GLOBAL STYLE */
