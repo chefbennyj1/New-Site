@@ -8,6 +8,7 @@ const mongoose = require('mongoose'); //DB interface
 const fs = require('fs'); //file system
 const mime = require('mime-types'); //ensure proper mime types
 const sharp = require('sharp'); //image editing
+const os = require('os');
 
 const app = express();
 
@@ -104,8 +105,9 @@ app.use("/api", apiRoutes);
 
 
 const PORT = 3000;
+var hostname = getLocalIPv4();
 app.listen(PORT, () => {
-  console.log(`Website running on http://localhost:${PORT}`);
+  console.log(`Website running on http://${hostname}:${PORT}`);
 });
 
 VolumeSync.updateVolumesFromFS();
@@ -113,3 +115,12 @@ VolumeSync.updateVolumesFromFS();
 setInterval(() => {
   VolumeSync.updateVolumesFromFS();
 }, 5 * 60 * 1000);
+
+function getLocalIPv4() {
+  const interfaces = os.networkInterfaces();
+  const allAddrs = Object.values(interfaces).flat();
+  const ipv4 = allAddrs.find(
+    (iface) => iface.family === 'IPv4' && !iface.internal
+  );
+  return ipv4 ? ipv4.address : 'localhost';
+}

@@ -12,7 +12,6 @@
     background: #fff;
     position: relative;
 }
-
 .page-layout-1 .panel.split-left {  
     clip-path: polygon(0 0, 100% 0, calc(100% - 300px) 100%, 0% 100%);   
 }
