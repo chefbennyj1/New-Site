@@ -4,20 +4,11 @@
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
 }
-.page-layout-1 > .panel.hero {
-    display: flex;
-    justify-content: space-between;
+.page-layout-1 .split-panel {
     grid-column: 1 / -1;
     grid-row: 1 / 4;
-    background: #fff;
-    position: relative;
 }
-.page-layout-1 .panel.split-left,
-.page-layout-1 .panel.split-right {
-    position: absolute;
-    width: calc(100vw - 46vw); 
-    overflow: hidden;
-}
+
 .page-layout-1 .panel.split-left {  
     clip-path: polygon(0 0, 100% 0, calc(100% - 300px) 100%, 0% 100%);   
 }

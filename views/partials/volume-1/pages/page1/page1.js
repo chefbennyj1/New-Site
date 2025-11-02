@@ -5,6 +5,8 @@ import TextBlock from '/scripts/TextBlock.js';
 
 
 export function init(container) {
+    // const root = document.documentElement;
+    // const rootComputedStyle = getComputedStyle(root);
 
     const textBlockCityNameContainer = document.querySelector('.text-block-city-name');
     // const textBlockNovaNameContainer = document.querySelector('.text-block-nova-name');
