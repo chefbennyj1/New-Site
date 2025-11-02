@@ -1,5 +1,12 @@
-@import url('./../4UaErEJDsxBrF37olUeD_xHM8pxULg.woff2');
-
+@import url('./../public/styles/fonts/4UaErEJDsxBrF37olUeD_xHM8pxULg.woff2');
+@font-face {
+  font-family: "Comic Book";
+  src: url("./../public/styles/fonts/Comic Book.otf") format("opentype");
+}
+@font-face {
+  font-family: "Comic Book Bold";
+  src: url("./../public/styles/fonts/Comic Book Bold.otf") format("opentype");
+}
 :root {
   --text-block-yellow: rgba(232, 185, 49, 0.9);
   --text-block-white: rgba(255,255,255,0.7);
@@ -15,11 +22,11 @@
   background: #fff;
   position: relative;
   /* needed for absolute overlay */
-  height: 90dvh;
-  margin-top: 10dvh;
-  font-family: "Comic Neue", cursive;
+  height: 93dvh;
+  margin-top: 8dvh;
+  font-family: "Comic Book", cursive;
   font-weight: 700;
-  font-size: 1.2em;
+  font-size: clamp(1em, 0.7em, 1.2em);
   font-style: bold;
   padding-right:2em;
 }
@@ -29,27 +36,7 @@
   overflow:hidden;
 }
 
-/* Split panels */
-.panel.split-panel {
-    display: flex;
-    justify-content: space-between;
-    background: #fff;
-    position: relative;
-}
-.panel.split-left,
-.panel.split-right {
-    position: absolute;
-    width: calc(100vw - 46vw); 
-    overflow: hidden;
-}
-.panel.split-left {  
-    clip-path: polygon(0 0, 100% 0, calc(100% - 300px) 100%, 0% 100%);   
-}
-.panel.split-right {
-    clip-path: polygon(300px 0, 100% 0, 100% 100%, 0% 100%);  
-    right: 0;
-    bottom:-15%;
-}
+
 
 video {
   object-fit: cover;
@@ -66,3 +53,25 @@ img {
   position:absolute;
 }
 
+@keyframes fadeOut {
+     from { 
+      opacity: 1; 
+    }
+     to { 
+      opacity: 0; 
+    }
+   }
+      @keyframes fadeIn {
+     from { 
+      opacity: 0; 
+    }
+     to { 
+      opacity: 1; 
+    }
+   }
+    .fade-out {
+     animation: fadeOut 0.5s ease-out forwards;
+   }
+    .fade-in {
+     animation: fadeIn 0.5s ease-in forwards;
+   }

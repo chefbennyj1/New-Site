@@ -2,9 +2,9 @@
 
 @import url(../../../comicPageLayout2.css);
 
-.speech-bubble-container.speech-bubble-story-line-page2-1 {
-  top:18dvh;
-  right:25dvw;
+.speech-bubble-container.speech-bubble-nova-line-page2-1 {
+  bottom:18dvh;
+  right:30dvw;
 }
 
 .text-block-container.text-block-story-line-page2-1 {
@@ -15,4 +15,19 @@
 .text-block-container.text-block-story-line-page2-2 {
     top: 30dvh;
     left: 28dvw;
+}
+
+.text-block-container.text-block-story-line-page2-3 {
+    top: 35dvh;
+    left: 58dvw;
+}
+
+.text-block-container.text-block-story-line-page2-4 {
+    bottom: 15dvh;
+    left: 8dvw;
+}
+
+.text-block-container.text-block-story-line-page2-5 {
+    top: 20dvh;
+    right: 20dvw;
 }

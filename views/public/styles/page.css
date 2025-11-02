@@ -87,20 +87,45 @@ body {
 
 /* HEADER */
 header {
+  backdrop-filter: blur(3px);  /* frosted  */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 10vh;
   overflow: hidden;
-  /* background-color: #232323; */
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4); /* line */
   top: 0;
   position: fixed;
   left: 0;
   width: 100%;
   z-index: 1000;
-  /* keep it on top of video */
+  height:8dvh;
 }
+
+
+header .logo-container {
+  color: var(--color-four);
+  font-family: var(--font-name);
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  caret-color: #262626;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  display: block;
+  font-size: 1rem;
+  left: 5%;
+  color: var(--color-five);
+}
+
+#logo {
+  display: flex;
+}
+
+
 
 /* LOADING SCREEEN */
 #loading-page {
@@ -194,81 +219,9 @@ section.active .section-container{
 }
 
 
-header .logo-container {
-  /* display: flex; */
-  align-items: center;
-  justify-items: flex-start;
-  color: var(--color-four);
-  font-family: var(--font-name);
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 0.5em;
-  /* text-shadow: 0 0 3px #444; */
-  /* text-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1); */
-  caret-color: #262626;
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
-  display: block;
-  font-size: 1rem;
-  left: 5%;
-  color: var(--color-five);
-}
-
-#logo {
-  display: flex;
-}
 
 
 
-
-.glass-filter {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  backdrop-filter: blur(3px);
-  filter: url(#lg-dist-2);
-  isolation: isolate;
-  pointer-events: none;
-}
-
-.glass-overlay {
-  position: absolute;
-  /* inset: 0; */
-  width: 25vw;
-  height: 25vh;
-  z-index: 1;
-  background: var(--lg-bg-color);
-  pointer-events: none;
-}
-
-.glass-specular {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  border-radius: inherit;
-  overflow: hidden;
-  box-shadow: inset 1px 1px 0 var(--lg-highlight),
-    inset 0 0 5px var(--lg-highlight);
-  pointer-events: none;
-}
-
-.glass-content {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 1rem 1.5rem 0.9rem;
-  pointer-events: none;
-}
-
-.glass-content--inline {
-  flex: 1 1 auto;
-  justify-content: space-between;
-}
 
 
 

@@ -12,13 +12,13 @@
         </div> 
        
         <div class="text-block-container text-block-city-name"></div> 
-        
+         <video id="fadePlayer" style="display: none; position: absolute;"></video>
 
     </div>
 <div class="text-block-container text-block-city-name"></div> 
     <div class="panel vertical comic-effect">
         <video id="page1-video3" data-src="/api/videos/volume-1/page1/assets/this_team.mp4" muted playsinline preload="none" loop
-                disablePictureInPicture poster="/api/images/volume-1/page1/assets/this_team.png"></video>
+                disablePictureInPicture poster="/api/images/volume-1/page1/assets/this_team.png" onloadedmetadata="this.playbackRate = 0.5;"></video>
     </div>
 
     <div class="panel bottom-1 comic-effect">
@@ -26,7 +26,7 @@
     </div>
     <div class="panel bottom-2">
         <video id="page1-video2" data-src="/api/videos/volume-1/page1/assets/apt.mp4" muted playsinline preload="none" loop
-                disablePictureInPicture poster="/api/images/volume-1/page1/assets/apt.png"></video>
+                disablePictureInPicture poster="/api/images/volume-1/page1/assets/apt.png" onloadedmetadata="this.playbackRate = 0.5;"></video>
     </div>
     <!-- <div class="panel bottom-3">
     <video src="" autoplay muted loop></video>

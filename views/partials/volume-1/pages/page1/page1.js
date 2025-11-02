@@ -62,8 +62,9 @@ export function init(container) {
     })
 
     let videos = container.querySelectorAll('video[data-src]');
-    enableMedia(videos);
-    
+    enableMedia(videos); 
+
+
     cityNameTextBlock.render();
     storylineIntroTextBlock1.render();
     storylineIntroTextBlock2.render();
@@ -87,9 +88,10 @@ export function init(container) {
     });
 
     console.log(`loading ${container.id}`)
-    const character_1 = container.querySelector('.parallax-scene-character-1');
-    //renderLiquidBackground();
+    
 }
+
+
 function renderLiquidBackground(container) {
     const app = LiquidBackground(document.getElementById('liquid-canvas'))
 
@@ -102,11 +104,32 @@ function renderLiquidBackground(container) {
 }
 
 function enableMedia(videos) {
+
     if (window.audioEnabled) {
         window.transitionAudio.play();
     }
 
     videos.forEach(video => {
+        
+
+    const fadeDuration = 0.5; // The duration of the fade in seconds
+     
+      video.addEventListener('timeupdate', () => {
+        if (video.duration - video.currentTime <= fadeDuration) {
+          video.classList.add('fade-out');
+          video.classList.remove('fade-in');
+        }
+      });
+     
+      video.addEventListener('seeked', () => {
+        if (video.currentTime < fadeDuration) {
+          video.classList.remove('fade-out');
+          video.classList.add('fade-in');
+        }
+      });
+
+
+        
         if (video.paused) {
             video.src = video.dataset.src;
             video.play().catch(err => console.log("Play error:", err));

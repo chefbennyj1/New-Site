@@ -7,6 +7,10 @@
 .page-layout-1 .split-panel {
     grid-column: 1 / -1;
     grid-row: 1 / 4;
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    position: relative;
 }
 
 .page-layout-1 .panel.split-left {  
@@ -16,6 +20,12 @@
     clip-path: polygon(300px 0, 100% 0, 100% 100%, 0% 100%);  
     right: 0;
     bottom:-15%;
+}
+.panel.split-left,
+.panel.split-right {
+    position: absolute;
+    width: calc(100vw - 46vw); 
+    overflow: hidden;
 }
 .page-layout-1 > .panel.bottom-1 {
   grid-column: 1 / 3;

@@ -29,7 +29,7 @@ class TextBlock {
     const pathD = this._generatePathD(width, height);
     return `
        <div class="text-block" style="box-shadow: rgba(0,0,0,0.9) 6px 6px 10px; color: ${this.options.textColor}; background: ${this.options.background}; padding: ${this.options.padding}px; border: solid 2px ${this.options.borderColor}">
-          ${this.options.text}
+          ${this.options.text.toUpperCase()}
        </div>
     `
     // return `
