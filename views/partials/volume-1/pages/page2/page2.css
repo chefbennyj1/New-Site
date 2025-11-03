@@ -2,32 +2,43 @@
 
 @import url(../../../comicPageLayout2.css);
 
-.speech-bubble-container.speech-bubble-nova-line-page2-1 {
-  bottom:18dvh;
-  right:30dvw;
+.speech-bubble-container.speech-bubble-swat-officer-line-page2-1 {
+  bottom:16dvh;
+  left:45dvw;
 }
-
+/* the building is a mess */
 .text-block-container.text-block-story-line-page2-1 {
     top: 4dvh;
-    left: 3dvw;
+    left: 25dvw;
 }
-
+/* ..it stinks...*/
 .text-block-container.text-block-story-line-page2-2 {
-    top: 30dvh;
-    left: 28dvw;
+    top: 20dvh;
+    left: 30dvw;
 }
-
+/*...and the neighbours are... */
 .text-block-container.text-block-story-line-page2-3 {
     top: 35dvh;
-    left: 58dvw;
+    left: 45dvw;
 }
 
+/* ...proof that civilization is optional. */
 .text-block-container.text-block-story-line-page2-4 {
-    bottom: 15dvh;
-    left: 8dvw;
+    top: 35dvh;
+    right: 10dvw;
 }
-
+/* Can’t blame them — <br /> when you’ve been stepped on long enough... */
 .text-block-container.text-block-story-line-page2-5 {
-    top: 20dvh;
-    right: 20dvw;
+    bottom: 8dvh;
+    left: 13dvw;
+}
+/* ...you forget what standing up looks like. */
+.text-block-container.text-block-story-line-page2-6 {
+    bottom: 15dvh;
+    right: 8dvw;
+}
+/* NOVA */
+.text-block-container.text-block-story-line-page2-7 {
+    top: 10dvh;
+    left: 5dvw;
 }

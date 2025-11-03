@@ -10,15 +10,15 @@ export function init(container) {
     let videos = container.querySelectorAll('video[data-src]');
 
     container.addEventListener('view_visible', () => {
-        enableMedia(videos);
+        // enableMedia(videos);
     })
 
     container.addEventListener('view_hidden', () => {
-        videos.forEach(video => {
-            video.pause();
-            video.currentTime = 0;
-            console.log(`pausing video: ${video.src}`)
-        });
+        // videos.forEach(video => {
+        //     video.pause();
+        //     video.currentTime = 0;
+        //     console.log(`pausing video: ${video.src}`)
+        // });
     });
     console.log(`loading ${container.id}`)
 

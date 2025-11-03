@@ -27,8 +27,8 @@ export function init(container) {
 
     const storylineIntroTextBlock1 = new TextBlock(textBlockStorylineIntroContianer1, {
         text: 'In the part of the city everyone forgets to look — ',
-        textColor: '#000',
-        background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
+        textColor: "white",
+        background: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
         borderColor: 'white',
         borderwidth: 2,
         padding: 15
@@ -36,8 +36,8 @@ export function init(container) {
 
     const storylineIntroTextBlock2 = new TextBlock(textBlockStorylineIntroContianer2, {
         text: '— above a noodle shop that never closes — ',
-        textColor: '#000',
-        background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
+        textColor: "white",
+        background: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
         borderColor: 'white',
         borderwidth: 2,
         padding: 15
@@ -45,8 +45,8 @@ export function init(container) {
 
     const storylineIntroTextBlock3 = new TextBlock(textBlockStorylineIntroContainer3, {
         text: ' — lives a group of outsiders, unlikely heros...',
-        textColor: '#000',
-        background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
+        textColor: "white",
+        background: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
         borderColor: 'white',
         borderwidth: 2,
         padding: 15
@@ -54,8 +54,8 @@ export function init(container) {
 
     const storylineIntroTextBlock4 = new TextBlock(textBlockStorylineIntroContainer4, {
         text: 'standing on the edge of something far bigger than they can imagine. <br/> Not destiny. Not fate. Just bad timing… and worse luck.',
-        textColor: '#000',
-        background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
+        textColor: "white",
+        background: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
         borderColor: 'white',
         borderwidth: 2,
         padding: 15
@@ -67,7 +67,7 @@ export function init(container) {
 
     cityNameTextBlock.render();
     storylineIntroTextBlock1.render();
-    storylineIntroTextBlock2.render();
+    //storylineIntroTextBlock2.render();
     storylineIntroTextBlock3.render();
     storylineIntroTextBlock4.render();
 

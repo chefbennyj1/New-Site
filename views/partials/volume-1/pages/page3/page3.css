@@ -1,18 +1,18 @@
 @import url(./../../../comicMainPageLayout.css);
 
-@import url(../../../comicPageLayout2.css);
+@import url(../../../comicPageLayout3.css);
 
-.speech-bubble-container.speech-bubble-story-line-page2-1 {
+.speech-bubble-container.speech-bubble-story-line-page3-1 {
   top:18dvh;
   right:25dvw;
 }
 
-.text-block-container.text-block-story-line-page2-1 {
+.text-block-container.text-block-story-line-page3-1 {
     top: 4dvh;
     left: 3dvw;
 }
 
-.text-block-container.text-block-story-line-page2-2 {
+.text-block-container.text-block-story-line-page3-2 {
     top: 30dvh;
     left: 28dvw;
 }

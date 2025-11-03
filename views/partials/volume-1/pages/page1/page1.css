@@ -13,28 +13,20 @@
 
 }
 .text-block-city-name {   
-    top:15px;
-    left:15px; 
+    top:5dvh;
+    left:5dvw; 
 }
-/* .text-block-nova-name { */
-    /* top: 25vh; */
-    /* right: 20vw;  */
-    /* white-space: wrap;    */
-/* } */
-/* .text-block-nova-profession { */
-    /* top: 35vh; */
-    /* left:65vw; */
-/* } */
+
 .text-block-story-line-intro-1 {
-    top: 10vh;
-    left: 20vw;
+    top: 38dvh;
+    left: 20dvw;
 }
 .text-block-story-line-intro-2 {
    top: 25vh;
    right: 25vw;
 }
 .text-block-story-line-intro-3 {
-    top: 47vh;
+    top: 50vh;
     right: 35vw;
 }
 .text-block-story-line-intro-4 {

@@ -44,12 +44,16 @@
     (async () => {
       const params = new URLSearchParams(window.location.search);
       const volumeId = params.get('id');
-      console.log(volumeId);
+      
 
       var volume = await getViewItemsById(volumeId);
+
+      console.log(`${volume.title}`, );
+
       const scrollWapper = document.querySelector('.scroll-wrapper')
       volume.pages.forEach(async page => {
 
+        console.log(`loading ${volume.title} page ${page.index}`);
         var section = document.createElement('section');
 
         section.id = `section-${page.index}`;

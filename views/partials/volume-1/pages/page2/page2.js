@@ -2,12 +2,14 @@ import TextBlock from '/scripts/TextBlock.js';
 import SpeechBubble from '/scripts/speechbubble.js';
 export function init(container) {
 
-    const speechBubbleStorylineIntroContianer1 = document.querySelector('.speech-bubble-nova-line-page2-1');
+    const speechBubbleSwatOfficerLineContianer1 = document.querySelector('.speech-bubble-swat-officer-line-page2-1');
     const textBlockStorylineIntroContianer1 = document.querySelector('.text-block-story-line-page2-1');
     const textBlockStorylineIntroContianer2 = document.querySelector('.text-block-story-line-page2-2');
     const textBlockStorylineIntroContianer3 = document.querySelector('.text-block-story-line-page2-3');
     const textBlockStorylineIntroContianer4 = document.querySelector('.text-block-story-line-page2-4');
     const textBlockStorylineIntroContianer5 = document.querySelector('.text-block-story-line-page2-5');
+    const textBlockStorylineIntroContianer6 = document.querySelector('.text-block-story-line-page2-6');
+    const textBlockStorylineIntroContianer7 = document.querySelector('.text-block-story-line-page2-7');
     let videos = container.querySelectorAll('video[data-src]');
 
     container.addEventListener('view_visible', () => {
@@ -25,8 +27,8 @@ export function init(container) {
 
     //animateBottomPanel();
 
-    const storylineIntroSpeechBubble1 = new SpeechBubble(speechBubbleStorylineIntroContianer1, {
-        text: 'Hey! Lee! I\'m back...',
+    const storylineSwatOfficerBubbleSpeechBubble1 = new SpeechBubble(speechBubbleSwatOfficerLineContianer1, {
+        text: 'Citizen! return to your home',
         fill: 'rgba(255,255,255,0.6)',
         stroke: '#000',
         strokeWidth: 3,
@@ -38,39 +40,57 @@ export function init(container) {
     const storylineIntroTextBlock1 = new TextBlock(textBlockStorylineIntroContianer1, {
         text: 'The building is a mess...',
         textColor: '#000',
-        background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
-        borderColor: 'white',
+       background: 'rgba(255, 255, 255, 0.9)', // Semi-transparent black background
+        borderColor: '#000',
         borderwidth: 2,
         padding: 15
     })
 
     const storylineIntroTextBlock2 = new TextBlock(textBlockStorylineIntroContianer2, {
-        text: "..it stinks, and the neighbours are...",
+        text: "..it stinks...",
         textColor: '#000',
-        background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
-        borderColor: 'white',
+        background: 'rgba(255, 255, 255, 0.9)', // Semi-transparent black background
+        borderColor: '#000',
         borderwidth: 2,
         padding: 15
     })
+
     const storylineIntroTextBlock3 = new TextBlock(textBlockStorylineIntroContianer3, {
-        text: '...proof that civilization is optional.',
+        text: "...and the neighbours?",
         textColor: '#000',
-        background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
-        borderColor: 'white',
+        background: 'rgba(255, 255, 255, 0.9)', // Semi-transparent black background
+        borderColor: '#000',
         borderwidth: 2,
         padding: 15
     })
 
     const storylineIntroTextBlock4 = new TextBlock(textBlockStorylineIntroContianer4, {
-        text: 'Can’t blame them — <br /> when you’ve been stepped on long enough, <br />you forget what standing up looks like.',
+        text: 'Proof that civilization is optional.',
         textColor: '#000',
-        background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
-        borderColor: 'white',
+        background: 'rgba(255, 255, 255, 0.9)', // Semi-transparent black background
+        borderColor: '#000',
         borderwidth: 2,
         padding: 15
     })
 
-     const storylineIntroTextBlock5 = new TextBlock(textBlockStorylineIntroContianer5, {
+    const storylineIntroTextBlock5 = new TextBlock(textBlockStorylineIntroContianer5, {
+        text: 'Can’t blame them — <br /> when you’ve been stepped on long enough...',
+        textColor: '#000',
+        background: 'rgba(255, 255, 255, 0.9)', // Semi-transparent black background
+        borderColor: '#000',
+        borderwidth: 2,
+        padding: 15
+    })
+    const storylineIntroTextBlock6 = new TextBlock(textBlockStorylineIntroContianer6, {
+        text: '...you forget what standing up looks like.',
+        textColor: '#000',
+        background: 'rgba(255, 255, 255, 0.9)', // Semi-transparent black background
+        borderColor: '#000',
+        borderwidth: 2,
+        padding: 15
+    })
+
+     const storylineIntroTextBlock7 = new TextBlock(textBlockStorylineIntroContianer7, {
         text: 'Nova',
         textColor: 'white',
         background: 'rgba(0, 0,0, 0.9)', // Semi-transparent black background
@@ -79,12 +99,15 @@ export function init(container) {
         padding: 15
     })
 
-    storylineIntroSpeechBubble1.render();
+
+    storylineSwatOfficerBubbleSpeechBubble1.render();
     storylineIntroTextBlock1.render();
     storylineIntroTextBlock2.render();
     storylineIntroTextBlock3.render();
     storylineIntroTextBlock4.render();
     storylineIntroTextBlock5.render();
+    storylineIntroTextBlock6.render();
+    storylineIntroTextBlock7.render();
 }
 
 function enableMedia(videos) {
