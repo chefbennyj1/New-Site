@@ -16,39 +16,111 @@
 
 <body>
   <header>
-   
-      <div class="logo-wrapper">
-        <div class="logo-container">
-          <div id="header-logo" data-text="NO//:OVERFLOW" class="">N0//:0VERFL0W</div>
-        </div>
+
+    <div class="logo-wrapper">
+      <div class="logo-container">
+        <div id="header-logo" data-text="NO//:OVERFLOW" class="">N0//:0VERFL0W</div>
       </div>
-      <nav>
-        <!-- <ul class="nav--links">
+    </div>
+    <nav>
+      <!-- <ul class="nav--links">
         <li>
 
         </li>
       </ul> -->
-      </nav>
-      <!-- <div class="btn get-started-btn" onclick="window.location.href='/login'"><span>Get Started</span></div> -->
-   
+    </nav>
+    <div class="btn audio-btn">
+      <span class="audio-bar audio-bar-1"></span>
+      <span class="audio-bar audio-bar-2"></span>
+      <span class="audio-bar audio-bar-3"></span>
+      <span class="audio-bar audio-bar-4"></span>
+      <span class="label">on/off</span>
+    </div>
+
   </header>
-  
-  <canvas id="tube-cursor"></canvas>
 
   <div class="scroll-wrapper"></div>
- 
+
+  <script>
+    (() => {
+      //Audio Interface
+      let analyzer;
+      let audioSource;
+      const audio = new Audio();
+      audio.src = "/audio/background.mp3";
+      audio.loop = true;
+      const audioContext = new AudioContext();
+      audioSource = audioContext.createMediaElementSource(audio);
+      analyzer = audioContext.createAnalyser();
+      audioSource.connect(analyzer);
+      analyzer.connect(audioContext.destination);
+      analyzer.fftSize = 64; //will be 32 - always half the fttsize
+      const bufferLength = analyzer.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+      const audioBtnVisiualizer = document.querySelector('.audio-btn')
+
+      const barWidth = "3px";
+      let barHeight;
+      let x = 0;
+
+      function animate() {
+        analyzer.getByteFrequencyData(dataArray);
+
+        // helper to get average of a small frequency range
+        const avg = (start, end) => {
+          let sum = 0;
+          for (let i = start; i < end; i++) sum += dataArray[i];
+          return sum / (end - start);
+        };
+
+        // pick four frequency ranges roughly across the spectrum
+        const barValues = [
+          avg(2, 6),   // low bass
+          avg(6, 12),  // mid-low
+          avg(12, 20), // mids
+          avg(20, 32), // highs
+        ];
+
+
+        // apply smooth scaling with easing/damping
+        const bars = audioBtnVisiualizer.querySelectorAll('.audio-bar');
+        bars.forEach((bar, i) => {
+          const scale = Math.max(barValues[i] / 128, 0.1); // normalize 0–2x scale
+          const prev = parseFloat(bar.dataset.scale || 1);
+          const smoothed = prev + (scale - prev) * 0.25; // damping factor 0.25
+          bar.style.transform = `scaleY(${smoothed})`;
+          bar.dataset.scale = smoothed;
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+
+      document.querySelector('.audio-btn').addEventListener('click', async () => {
+        // resume the audio context first
+        if (audioContext.state === 'suspended') {
+          await audioContext.resume();
+        }
+
+        // then play the audio
+        audio.play();
+        animate();
+      });
+
+    })();
+  </script>
 
   <!-- PAGELOADER -->
   <script type="module">
-    import { loadSection, loadCSS, loadScript } from "/scripts/pageLoader.js"
+    import { loadSection, loadCSS, loadScript } from "/libs/pageLoader.js"
     (async () => {
       const params = new URLSearchParams(window.location.search);
       const volumeId = params.get('id');
-      
+
 
       var volume = await getViewItemsById(volumeId);
 
-      console.log(`${volume.title}`, );
+      console.log(`${volume.title}`,);
 
       const scrollWapper = document.querySelector('.scroll-wrapper')
       volume.pages.forEach(async page => {
@@ -69,13 +141,13 @@
       //sections are loaded
       window.dispatchEvent(new CustomEvent('sectionsloadedcomplete', { detail: "" }));
 
-            const section1 = document.querySelector('.section-1');
-            section1.classList.add('active');
-            //new SmoothScroller({ sectionSelector: '.scroll-section' });
-      
-          })();
+      const section1 = document.querySelector('.section-1');
+      section1.classList.add('active');
+      //new SmoothScroller({ sectionSelector: '.scroll-section' });
 
-    
+    })();
+
+
     async function getViewItemsById(id) {
       try {
         const res = await fetch(`/api/volume/${id}`);
@@ -93,85 +165,24 @@
       }
     }
   </script>
-  
+
   <!-- Icon Packages -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
   <!-- GSAP core -->
-  <script src="scripts/gsap/gsap.min.js"></script>
+  <script src="libs/gsap/gsap.min.js"></script>
 
-  <script src="scripts/gsap/SplitText.min.js"></script>
+  <script src="libs/gsap/SplitText.min.js"></script>
 
-  <script src="scripts/gsap/CustomEase.min.js"></script>
+  <script src="libs/gsap/CustomEase.min.js"></script>
 
   <!--Lenis smooth scrolling-->
-  <script src="scripts/lenis.min.js"></script>
+  <script src="libs/lenis.min.js"></script>
 
   <!-- JS files -->
-  <script type="module" src="scripts/SmoothScroller.js"></script>
+  <script type="module" src="libs/SmoothScroller.js"></script>
 
-
-  <script>
-    (() => {
-      const canvas = document.getElementById('tube-cursor');
-      const ctx = canvas.getContext('2d');
-
-      let width = canvas.width = window.innerWidth;
-      let height = canvas.height = window.innerHeight;
-
-      window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-      });
-
-      const points = [];        // trail points
-      const maxPoints = 30;     // length of the tube
-
-      let mouse = { x: width / 2, y: height / 2 };
-
-      window.addEventListener('mousemove', e => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-      });
-
-      function lerp(a, b, t) {
-        return a + (b - a) * t;
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, width, height);
-
-        // add current mouse position as first point
-        points.unshift({ x: mouse.x, y: mouse.y });
-
-        // limit number of points
-        if (points.length > maxPoints) points.pop();
-
-        // draw tube
-        for (let i = 0; i < points.length - 1; i++) {
-          const p0 = points[i];
-          const p1 = points[i + 1];
-
-          const t = i / points.length;
-          const radius = lerp(10, 2, t); // thick to thin
-
-          ctx.beginPath();
-          ctx.moveTo(p0.x, p0.y);
-          ctx.lineTo(p1.x, p1.y);
-          ctx.strokeStyle = `hsla(${200 + t * 50}, 100%, 60%, ${1 - t})`; // cyan-blue gradient
-          ctx.lineWidth = radius;
-          ctx.shadowColor = `hsla(200,100%,70%,0.5)`;
-          ctx.shadowBlur = 8;
-          ctx.stroke();
-        }
-
-        requestAnimationFrame(draw);
-      }
-
-      draw();
-    })();
-  </script>
 </body>
 
 </html>

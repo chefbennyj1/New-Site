@@ -1,5 +1,5 @@
-import TextBlock from '/scripts/TextBlock.js';
-import SpeechBubble from '/scripts/speechbubble.js';
+import TextBlock from '/libs/TextBlock.js';
+import SpeechBubble from '/libs/speechbubble.js';
 export function init(container) {
 
     const speechBubbleStorylineIntroContianer1 = document.querySelector('.speech-bubble-story-line-page2-1');

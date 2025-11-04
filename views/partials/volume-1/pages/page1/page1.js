@@ -1,7 +1,7 @@
 //import LiquidBackground from './liquidBackground.js'
-import { initPageTiltEffects } from '/scripts/tiltEffect.js';
-import { initParallaxEffects } from '/scripts/parallax.js';
-import TextBlock from '/scripts/TextBlock.js';
+import { initPageTiltEffects } from '/libs/tiltEffect.js';
+import { initParallaxEffects } from '/libs/parallax.js';
+import TextBlock from '/libs/TextBlock.js';
 
 
 export function init(container) {

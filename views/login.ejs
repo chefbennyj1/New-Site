@@ -24,14 +24,14 @@
   
   <script type="module">
 
-    import { loadSection, loadCSS, loadScript } from "/scripts/pageLoader.js"
+    import { loadSection, loadCSS, loadScript } from "/libs/pageLoader.js"
 
     (async () => {
 
       await loadSection('login', '/views/login/login.html');
 
-      await loadCSS('/styles/button.css');
-      await loadScript("/scripts/button.js");
+      await loadCSS('/libs/button/button.css');
+      await loadScript("/libs/button/button.js");
 
     })();
 

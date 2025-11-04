@@ -127,7 +127,7 @@ async function renderLibraryHtml(volumes) {
       _id: volume._id,
       index: volume.index,
       title: volume.title,
-      imgUrl: `${volume.volumePath}folder.png?resize=500`
+      imgUrl: `${volume.volumePath}${volume.index}_folder.png?resize=500`
     })
     html += card;
   })

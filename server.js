@@ -61,7 +61,7 @@ app.use('/views', express.static(path.join(__dirname, 'views')));
 app.use('/views/partials', express.static(path.join(__dirname, 'views/partials')));
 
 //javascript modules
-app.use('/scripts', express.static(path.join(__dirname, 'views/public/scripts')));
+app.use('/libs', express.static(path.join(__dirname, 'libs')));
 
 
 app.use(express.urlencoded({ extended: true }));

@@ -37,68 +37,12 @@
   <script src="https://unpkg.com/lenis@1.2.3/dist/lenis.min.js"></script>
 
  <script type="module">
-    import { loadSection, loadCSS, loadScript } from "/scripts/pageLoader.js"
+    import { loadSection, loadCSS, loadScript } from "/libs/pageLoader.js"
     (async () => {
 
       await loadSection('dashboard', '/views/dashboard/dashboard.html');
       await loadScript('/views/dashboard/cardBuilder.js');
-      await loadCSS('/views/dashboard/card.css');
-        //await loadSection('section-three', '/partials/section-three/section-three.html'),
-        // await loadSection('section-four', '/partials/section-four/section-four.html'),
-
-        //await loadCSS('/style.css'),
-        //await loadScript("/scripts/button.js");
-
-      // await loadCSS('/styles/tiltEffects.css');
-
-
-      //sections are loaded
-      //window.dispatchEvent(new CustomEvent('sectionsloadedcomplete', { detail: "" }));
-
-      // loading page elements
-      // let loader = document.getElementById("loading-page");
-      // let audioEnabledCheckbox = document.querySelector('#enable-audio-layer');
-      // let enterBtn = loader.querySelector('#enter-btn');
-
-      //enterBtn.style.display = "block";
-
-      //global audio
-      // window.transitionAudio = new Audio('/audio/transition_audio.mp3');
-      // window.bgAudio = new Audio('/audio/background.mp3');
-      // window.storyName = new Audio('/audio/no_overflow_hacker.mp3');
-
-      // window.bgAudio.volume = 0.5;
-      // window.bgAudio.loop = true;
-
-      // window.audioEnabled = audioEnabledCheckbox.checked;
-      // localStorage.setItem('audioEnabled', window.audioEnabled);
-      // audioEnabledCheckbox.addEventListener('change', () => {
-        // window.audioEnabled = audioEnabledCheckbox.checked;
-        // console.log(`transition audio ${window.enableAudio}.`);
-        // localStorage.setItem('audioEnabled', window.audioEnabled);
-      // });
-
-      //signal 'ready' n the loading page.
-      //handleLoadingText();
-
-      // enterBtn.addEventListener('click', (e) => {
-      //   e.preventDefault();
-
-      //   loader.style.display = "none";
-
-      //   const sectionOne = document.querySelector('.section-one');
-      //   sectionOne.classList.add('active');
-
-      //   if (window.audioEnabled) {
-      //     window.bgAudio.play();
-      //     window.storyName.play();
-      //   }
-
-      //   //Force play here because the sound effect 
-      //   //doesn't play in the section-one viewing evene the first time
-      //   //window.transitionAudio.play();
-
-      // })
+      await loadCSS('/views/dashboard/card.css');      
 
     })();
 

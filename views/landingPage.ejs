@@ -50,7 +50,7 @@
   
   <script type="module">
 
-    import { loadSection, loadCSS, loadScript } from "/scripts/pageLoader.js"
+    import { loadSection, loadCSS, loadScript } from "/libs/pageLoader.js"
 
     (async () => {
 
@@ -62,8 +62,8 @@
 
       await loadSection('landing-page', '/views/landingPage/landingPage.html');
       
-      await loadCSS('/styles/button.css');
-      await loadScript("/scripts/button.js");
+      await loadCSS('/libs/button/button.css');
+      await loadScript("/libs/button/button.js");
       await loadCSS('/styles/tiltEffects.css');
 
 
@@ -195,22 +195,22 @@
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
   <!-- GSAP core -->
-  <script src="scripts/gsap/gsap.min.js"></script>
-  <script src="scripts/gsap/ScrambleTextPlugin.min.js"></script>
+  <script src="libs/gsap/gsap.min.js"></script>
+  <script src="libs/gsap/ScrambleTextPlugin.min.js"></script>
 
 
-  <!-- <script src="scripts/gsap/MotionPathHelper.min.js"></script> -->
-  <!-- <script src="scripts/gsap/MotionPathPlugin.min.js"></script> -->
-  <!-- <script src="scripts/gsap/MorphSVGPlugin.min.js"></script> -->
-  <!-- <script src="scripts/gsap/ScrollTrigger.min.js"></script> -->
+  <!-- <script src="libs/gsap/MotionPathHelper.min.js"></script> -->
+  <!-- <script src="libs/gsap/MotionPathPlugin.min.js"></script> -->
+  <!-- <script src="libs/gsap/MorphSVGPlugin.min.js"></script> -->
+  <!-- <script src="libs/gsap/ScrollTrigger.min.js"></script> -->
   <!-- ScrollSmoother requires ScrollTrigger -->
-  <!-- <script src="scripts/gsap/ScrollSmoother.min.js"></script> -->
-  <script src="scripts/gsap/SplitText.min.js"></script>
+  <!-- <script src="libs/gsap/ScrollSmoother.min.js"></script> -->
+  <script src="libs/gsap/SplitText.min.js"></script>
 
-  <script src="scripts/gsap/CustomEase.min.js"></script>
+  <script src="libs/gsap/CustomEase.min.js"></script>
 
   <!--Lenis smooth scrolling-->
-  <script src="scripts/lenis.min.js"></script>
+  <script src="libs/lenis.min.js"></script>
 
   <!-- JS files -->
   <script type="module" scripts="/SmoothScroller.js"></script>

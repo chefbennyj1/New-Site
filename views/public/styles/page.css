@@ -124,7 +124,29 @@ header .logo-container {
 #logo {
   display: flex;
 }
-
+.audio-btn {
+  display: flex;
+  align-items: flex-end; /* bottom align */
+  gap: 4px;
+  height: 25px;
+  width: 40px;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  cursor: pointer;
+}
+.audio-btn .label {
+  right:40px;
+  position:absolute;
+}
+.audio-bar {
+  width: 3px;
+  height: 100%; /* base height to scale from */
+  background: #00ffff;
+  transform-origin: bottom; /* scale grows upward */
+  transform: scaleY(0.1);
+  transition: transform 0.1s linear;
+  border-radius: 2px;
+}
 
 
 /* LOADING SCREEEN */

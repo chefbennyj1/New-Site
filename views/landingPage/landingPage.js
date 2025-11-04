@@ -1,7 +1,7 @@
 import * as THREE from '/three/three.module.js';
 import { FlakesTexture } from '/three_jsm/textures/FlakesTexture.js';
 import { EXRLoader } from '/three_jsm/loaders/EXRLoader.js';
-import { initPageTiltEffects } from '/scripts/tiltEffect.js';
+import { initPageTiltEffects } from '/libs/tiltEffect.js';
 
 let _heroVideo;
 export function init(container) {
