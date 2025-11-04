@@ -3,8 +3,9 @@
 @import url(../../../comicPageLayout2.css);
 
 .speech-bubble-container.speech-bubble-swat-officer-line-page2-1 {
-  bottom:16dvh;
-  left:45dvw;
+    top: 35dvh;
+    right: 5dvw;
+  
 }
 /* the building is a mess */
 .text-block-container.text-block-story-line-page2-1 {
@@ -18,27 +19,34 @@
 }
 /*...and the neighbours are... */
 .text-block-container.text-block-story-line-page2-3 {
-    top: 35dvh;
+    top: 30dvh;
     left: 45dvw;
 }
 
 /* ...proof that civilization is optional. */
 .text-block-container.text-block-story-line-page2-4 {
-    top: 35dvh;
-    right: 10dvw;
+    top:40dvh;
+    left:45dvw;
 }
 /* Can’t blame them — <br /> when you’ve been stepped on long enough... */
 .text-block-container.text-block-story-line-page2-5 {
-    bottom: 8dvh;
-    left: 13dvw;
+    bottom: 12dvh;
+    left: 40dvw;
 }
 /* ...you forget what standing up looks like. */
 .text-block-container.text-block-story-line-page2-6 {
-    bottom: 15dvh;
-    right: 8dvw;
+    bottom: 5dvh;
+    left: 45dvw;
 }
 /* NOVA */
 .text-block-container.text-block-story-line-page2-7 {
     top: 10dvh;
     left: 5dvw;
+}
+.page-layout-2 .panel-1a {
+   width:25dvw!important;
+}
+.panel-2a video{
+  
+  
 }

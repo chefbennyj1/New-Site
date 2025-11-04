@@ -6,7 +6,7 @@ const path = require('path');
 const UserModel = require('../models/User.js');
 //VOLUMES SCHEMA
 const VolumeModel = require('../models/Volume.js');
-const VolumeManager = require("./../services/VolumeManager.js");
+const VolumeManager = require("../services/VolumeService.js");
 
 //FILE SYSTEM
 const fs = require('fs');

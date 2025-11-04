@@ -20,7 +20,7 @@ const siteRoutes = require("./routes/routes.js");
 const authRoutes = require("./authentication/authentication.js");
 const apiRoutes = require("./api/api.js");
 
-const VolumeSync = require("./services/VolumeSync.js")
+const VolumeSync = require("./services/VolumeSyncService.js")
 
 
 mongoose.connect(mongoDbURI, {
@@ -62,6 +62,7 @@ app.use('/views/partials', express.static(path.join(__dirname, 'views/partials')
 
 //javascript modules
 app.use('/libs', express.static(path.join(__dirname, 'libs')));
+app.use('/services', express.static(path.join(__dirname, 'services/public')));
 
 
 app.use(express.urlencoded({ extended: true }));

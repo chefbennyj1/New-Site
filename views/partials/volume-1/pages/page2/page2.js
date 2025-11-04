@@ -28,7 +28,7 @@ export function init(container) {
     //animateBottomPanel();
 
     const storylineSwatOfficerBubbleSpeechBubble1 = new SpeechBubble(speechBubbleSwatOfficerLineContianer1, {
-        text: 'Citizen! return to your home',
+        text: 'Citizen! it is passed curfew, <br />return to your home!',
         fill: 'rgba(255,255,255,0.6)',
         stroke: '#000',
         strokeWidth: 3,
@@ -108,6 +108,20 @@ export function init(container) {
     storylineIntroTextBlock5.render();
     storylineIntroTextBlock6.render();
     storylineIntroTextBlock7.render();
+
+    //Timeline
+    let video1 = document.querySelector('#page2-video1');
+    let video2 = document.querySelector('#page2-video2');
+    let video3 = document.querySelector('#page2-video3');
+
+    video3.addEventListener('timeupdate', () => {
+        if(video3.currentTime > 5) {
+            storylineSwatOfficerBubbleSpeechBubble1.container.style.visibility  ="hidden";            
+        } 
+        if(video3.currentTime < 5) {
+             storylineSwatOfficerBubbleSpeechBubble1.container.style.visibility  ="visible";
+        }
+    })
 }
 
 function enableMedia(videos) {
