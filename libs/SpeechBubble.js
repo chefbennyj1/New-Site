@@ -1,22 +1,32 @@
 class SpeechBubble {
-  constructor(container, options) {
-    this.container = container;
+  constructor(page, options) {
     this.options = {
       text: '',
       fill: 'white',
       stroke: 'black',
       strokeWidth: 2,
       tailPosition: 'bottom-left', // Default tail position
-      // Add more options here as needed
+      top: null,
+      bottom: null,
+      left: null,
+      right: null,
+      className: null,
       ...options
     };
+
+    // Use the provided page, or default to the document body
+    this.page = page instanceof HTMLElement ? page : document.body;
+
+    // Create the container element
+    this.container = document.createElement('div');
+    this.container.style.position = "absolute";
+    this.container.classList.add('speech-bubble-container');
+    if(this.options.className) {
+      this.container.classList.add(this.options.className);
+    }
+
     this.svgElement = null;
     this.textElement = null;
-
-    if (!this.container) {
-      console.error('SpeechBubble: Container element not provided.');
-      return;
-    }
   }
 
   _generatePathD(width = 280, height = 80) {
@@ -115,6 +125,20 @@ class SpeechBubble {
   }
 
   render() {
+    // Append the container to the page
+    if (this.page) {
+      this.page.appendChild(this.container);
+    } else {
+      console.error('SpeechBubble: No valid page element to append to.');
+      return;
+    }
+
+    // Apply the position styles
+    if (this.options.top !== null) this.container.style.top = this.options.top;
+    if (this.options.bottom !== null) this.container.style.bottom = this.options.bottom;
+    if (this.options.left !== null) this.container.style.left = this.options.left;
+    if (this.options.right !== null) this.container.style.right = this.options.right;
+
     this.container.innerHTML = this._getBubbleHtml();
     this.svgElement = this.container.querySelector('svg');
     this.textElement = this.container.querySelector('.bubble-text');

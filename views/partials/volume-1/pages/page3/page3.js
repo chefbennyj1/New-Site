@@ -2,7 +2,7 @@ import TextBlock from '/libs/TextBlock.js';
 import SpeechBubble from '/libs/speechbubble.js';
 export function init(container) {
 
-    const speechBubbleStorylineIntroContianer1 = document.querySelector('.speech-bubble-story-line-page2-1');
+    //const speechBubbleStorylineIntroContianer1 = document.querySelector('.speech-bubble-story-line-page2-1');
     const textBlockStorylineIntroContianer1 = document.querySelector('.text-block-story-line-page3-1');
     const textBlockStorylineIntroContianer2 = document.querySelector('.text-block-story-line-page3-2');
     const textBlockStorylineIntroContianer3 = document.querySelector('.text-block-story-line-page3-3');
@@ -24,15 +24,15 @@ export function init(container) {
 
     //animateBottomPanel();
 
-    const storylineIntroSpeechBubble1 = new SpeechBubble(speechBubbleStorylineIntroContianer1, {
-        text: 'Lila! I\'m back...',
-        fill: 'rgba(255,255,255,0.6)',
-        stroke: '#000',
-        strokeWidth: 3,
-        tailPosition: 'top-left', // You can expand _generatePathD to use this
-        paddingX: "5px",
-        paddingY: "5px"
-    })
+    // const storylineIntroSpeechBubble1 = new SpeechBubble(speechBubbleStorylineIntroContianer1, {
+    //     text: 'Lila! I\'m back...',
+    //     fill: 'rgba(255,255,255,0.6)',
+    //     stroke: '#000',
+    //     strokeWidth: 3,
+    //     tailPosition: 'top-left', // You can expand _generatePathD to use this
+    //     paddingX: "5px",
+    //     paddingY: "5px"
+    // })
 
     const storylineIntroTextBlock1 = new TextBlock(textBlockStorylineIntroContianer1, {
         text: 'The building is a mess...',

@@ -2,7 +2,6 @@ import TextBlock from '/libs/TextBlock.js';
 import SpeechBubble from '/libs/speechbubble.js';
 export function init(container) {
 
-    const speechBubbleSwatOfficerLineContianer1 = document.querySelector('.speech-bubble-swat-officer-line-page2-1');
     const textBlockStorylineIntroContianer1 = document.querySelector('.text-block-story-line-page2-1');
     const textBlockStorylineIntroContianer2 = document.querySelector('.text-block-story-line-page2-2');
     const textBlockStorylineIntroContianer3 = document.querySelector('.text-block-story-line-page2-3');
@@ -26,16 +25,29 @@ export function init(container) {
     console.log(`loading ${container.id}`)
 
     //animateBottomPanel();
-
-    const storylineSwatOfficerBubbleSpeechBubble1 = new SpeechBubble(speechBubbleSwatOfficerLineContianer1, {
-        text: 'Citizen! it is passed curfew, <br />return to your home!',
+    const page = document.querySelector('.page2');
+    const storylineSwatOfficerBubbleSpeechBubble1 = new SpeechBubble(page, {
+        text: 'Citizen! its almost cerfew, <br />return to your home!',
         fill: 'rgba(255,255,255,0.6)',
         stroke: '#000',
         strokeWidth: 3,
         tailPosition: 'top-left', // You can expand _generatePathD to use this
         paddingX: "5px",
-        paddingY: "5px"
+        paddingY: "5px",
+        top: "35dvh",
+        right: "5dvw",
+        className: "speech-bubble-page2-1"
     })
+
+    // const storylineNovaBubbleSpeechBubble1 = new SpeechBubble({
+    //     text: 'Yeah, sure.',
+    //     fill: 'rgba(255,255,255,0.6)',
+    //     stroke: '#000',
+    //     strokeWidth: 3,
+    //     tailPosition: 'top-left', // You can expand _generatePathD to use this
+    //     paddingX: "5px",
+    //     paddingY: "5px"
+    // })
 
     const storylineIntroTextBlock1 = new TextBlock(textBlockStorylineIntroContianer1, {
         text: 'The building is a mess...',
@@ -113,13 +125,14 @@ export function init(container) {
     let video1 = document.querySelector('#page2-video1');
     let video2 = document.querySelector('#page2-video2');
     let video3 = document.querySelector('#page2-video3');
+    let speechbubble1 = document.querySelector('.speech-bubble-page2-1');
 
     video3.addEventListener('timeupdate', () => {
         if(video3.currentTime > 5) {
-            storylineSwatOfficerBubbleSpeechBubble1.container.style.visibility  ="hidden";            
+            speechbubble1.style.visibility  ="hidden";            
         } 
         if(video3.currentTime < 5) {
-             storylineSwatOfficerBubbleSpeechBubble1.container.style.visibility  ="visible";
+             speechbubble1.style.visibility  ="visible";
         }
     })
 }
