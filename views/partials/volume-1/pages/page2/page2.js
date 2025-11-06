@@ -27,7 +27,7 @@ export function init(container) {
     //animateBottomPanel();
     const page = document.querySelector('.page2');
     const storylineSwatOfficerBubbleSpeechBubble1 = new SpeechBubble(page, {
-        text: 'Citizen! its almost cerfew, <br />return to your home!',
+        text: 'Citizen! <br />return to your home!',
         fill: 'rgba(255,255,255,0.6)',
         stroke: '#000',
         strokeWidth: 3,
