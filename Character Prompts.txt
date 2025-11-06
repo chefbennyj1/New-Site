@@ -19,3 +19,13 @@ A League-of-Legends style anime, cinematic group portrait of four young adults a
 
 SWAT - Enemies:
 hentai anime. A futuristic police officer in a SWAT-style uniform stands beside a humanoid SWAT robot, both faceless behind sleek black helmets with tinted visors. Their armor is heavy, tactical, and matte-black with subtle blue neon accents. Each holds a sleek, high-tech rifle — compact, angular, and glowing faintly with energy conduits along the barrel. A futuristic squad car idles behind them, its lights casting reflections across the wet pavement. The scene takes place on a dark, neon-lit street in a cyberpunk city — damp concrete, faint mist, holographic ads flickering in the background. The mood is cinematic, tense, and atmospheric, with strong light contrast, shallow depth of field, and moody composition. Anime-inspired style with detailed textures and realism blended into a stylized toon look.soft depth of field, moody cinematic lighting, dramatic contrast, high-detail digital painting, 8K ultra-detailed, Riot Games / Arcane concept art style — cinematic, surreal, atmospheric.
+
+
+
+
+
+Notes: I noticed you included the "hentai" keyword in your original prompt. While this can sometimes be used to achieve a certain mature anime style, it can also lead to Not Safe For Work
+  (NSFW) results. In the second version, I've replaced it with "mature, 'seinen' manga aesthetic," which will give you a similar mature and detailed style without the risk of generating
+  explicit content.
+Style: A modern anime style, digital painting. Inspired by the aesthetics of "Ghost in the Shell," "Akira," and Riot Games' "Arcane." Influenced by the art of Artgerm, Zeronis, and
+  Jason Chan.

@@ -11,10 +11,10 @@ export function init(container) {
     const textBlockCityNameContainer = document.querySelector('.text-block-city-name');
     // const textBlockNovaNameContainer = document.querySelector('.text-block-nova-name');
     // const textBlockNovaProfessionContainer = document.querySelector('.text-block-nova-profession');
-    const textBlockStorylineIntroContianer1 = document.querySelector('.text-block-story-line-intro-1');
-    const textBlockStorylineIntroContianer2 = document.querySelector('.text-block-story-line-intro-2');
-    const textBlockStorylineIntroContainer3 = document.querySelector('.text-block-story-line-intro-3');
-    const textBlockStorylineIntroContainer4 = document.querySelector('.text-block-story-line-intro-4');
+    const textBlockStorylineIntroContianer1 = document.querySelector('.text-block-story-line-intro-page1-1');
+    const textBlockStorylineIntroContianer2 = document.querySelector('.text-block-story-line-intro-page1-2');
+    const textBlockStorylineIntroContainer3 = document.querySelector('.text-block-story-line-intro-page1-3');
+    const textBlockStorylineIntroContainer4 = document.querySelector('.text-block-story-line-intro-page1-4');
 
     const cityNameTextBlock = new TextBlock(textBlockCityNameContainer, {
         text: 'New Kyoto City',

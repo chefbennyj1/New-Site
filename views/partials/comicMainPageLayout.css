@@ -47,9 +47,9 @@ img {
   object-fit: cover;
 }
 
-.speech-bubble-container {
+/* .speech-bubble-container {
   position:absolute;
-}
+} */
 
 @keyframes fadeOut {
      from { 

@@ -1,6 +1,6 @@
 import TextBlock from '/libs/TextBlock.js';
 import SpeechBubble from '/libs/speechbubble.js';
-export function init(container) {
+export async function init(container) {
 
     const textBlockStorylineIntroContianer1 = document.querySelector('.text-block-story-line-page2-1');
     const textBlockStorylineIntroContianer2 = document.querySelector('.text-block-story-line-page2-2');
@@ -112,7 +112,7 @@ export function init(container) {
     })
 
 
-    storylineSwatOfficerBubbleSpeechBubble1.render();
+    await storylineSwatOfficerBubbleSpeechBubble1.render();
     storylineIntroTextBlock1.render();
     storylineIntroTextBlock2.render();
     storylineIntroTextBlock3.render();

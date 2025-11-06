@@ -6,6 +6,9 @@ class SpeechBubble {
       stroke: 'black',
       strokeWidth: 2,
       tailPosition: 'bottom-left', // Default tail position
+      textShadow: false,
+      textShadowColor: '#000',
+      fontSize: "1rem", //default
       top: null,
       bottom: null,
       left: null,
@@ -53,9 +56,11 @@ class SpeechBubble {
         break;
     }
 
+    const textShadowStyle = this.options.textShadow ? `text-shadow: -1px -1px 0 ${this.options.textShadowColor}, 1px -1px 0 ${this.options.textShadowColor}, -1px 1px 0 ${this.options.textShadowColor}, 1px 1px 0 ${this.options.textShadowColor};` : '';
+
     return `
       <div class="speech">
-        <svg xmlns="http://www.w3.org/2000/svg">
+        <svg xmlns="http://www.w3.org/2000/svg" style="text-align:center">
           <defs>
             <filter id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
               <feDropShadow dx="5" dy="5" stdDeviation="5" flood-color="#000000" flood-opacity="0.5" />
@@ -66,8 +71,8 @@ class SpeechBubble {
               d="${pathD}"
               fill="${this.options.fill}" stroke="${this.options.stroke}" stroke-width="${this.options.strokeWidth}" filter="url(#drop-shadow)"/>
           </g>
-          <foreignObject x="40" y="20" width="260" height="80">
-            <div xmlns="http://www.w3.org/1999/xhtml" class="bubble-text" style="white-space: nowrap;">
+          <foreignObject x="40" y="20" width="260" height="80" style="display:flex; justify-content:center; align-items:center">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="bubble-text" style="white-space: nowrap; ${textShadowStyle}; font-size: ${this.options.fontSize}">
               ${this.options.text}
             </div>
           </foreignObject>

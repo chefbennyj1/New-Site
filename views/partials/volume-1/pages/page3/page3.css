@@ -4,15 +4,16 @@
 
 .speech-bubble-container.speech-bubble-story-line-page3-1 {
   top:18dvh;
-  right:25dvw;
+  right:10dvw;
+
 }
 
 .text-block-container.text-block-story-line-page3-1 {
-    top: 4dvh;
-    left: 3dvw;
+    top: 24dvh;
+    left: 2dvw;
 }
 
 .text-block-container.text-block-story-line-page3-2 {
-    top: 30dvh;
-    left: 28dvw;
+    top: 5dvh;
+    right: 18dvw;
 }
