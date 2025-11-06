@@ -43,16 +43,18 @@ class SpeechBubble {
     const pathD = this._generatePathD();
     const tailPosition = this.options.tailPosition;
     let transform = '';
-
+    let translateY = '-15px';
     switch (tailPosition) {
       case 'bottom-right':
         transform = 'scaleX(-1)';
         break;
       case 'top-left':
         transform = 'scaleY(-1)';
+        translateY = '15px'; 
         break;
       case 'top-right':
         transform = 'scaleX(-1) scaleY(-1)';
+         translateY = '15px'; 
         break;
     }
 
@@ -71,7 +73,7 @@ class SpeechBubble {
               d="${pathD}"
               fill="${this.options.fill}" stroke="${this.options.stroke}" stroke-width="${this.options.strokeWidth}" filter="url(#drop-shadow)"/>
           </g>
-          <foreignObject x="40" y="20" width="260" height="80" style="display:flex; justify-content:center; align-items:center">
+          <foreignObject x="40" y="20" width="260" height="80" style="display:flex; justify-content:center; align-items:center; transform: translateY(${translateY});">
             <div xmlns="http://www.w3.org/1999/xhtml" class="bubble-text" style="white-space: nowrap; ${textShadowStyle}; font-size: ${this.options.fontSize}">
               ${this.options.text}
             </div>
