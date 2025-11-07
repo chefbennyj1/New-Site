@@ -78,7 +78,7 @@ export async function init(container) {
     })
 
     const storylineBubbleSpeechBubble5 = new SpeechBubble(page, {
-        text: 'Lee! Did you find it?.',
+        text: 'Oh good Rins here, hello Rin!...',
         fill: 'rgba(255,255,255,0.6)',
         stroke: '#000',
         strokeWidth: 3,
