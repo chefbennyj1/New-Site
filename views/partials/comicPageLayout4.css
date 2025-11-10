@@ -1,0 +1,25 @@
+.page-layout-4 {  
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.page-layout-4 .panel-1a { 
+  grid-row: 1 / span 4; 
+  grid-column: 1 / 2;
+  right:0; 
+}
+.page-layout-4 .panel-1b { 
+  grid-row: 1 / span 4; 
+  grid-column:  2 / 3;
+  right:0; 
+}
+.page-layout-4 .panel-1c { 
+  grid-row: 1 / span 4; 
+  grid-column: 3 / 4;
+  right:0; 
+}
+.page-layout-4 .panel-1d { 
+  grid-row: 1 / span 4; 
+  grid-column: 4 / 5;
+  right:0; 
+}

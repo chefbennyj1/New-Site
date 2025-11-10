@@ -32,9 +32,9 @@
 }
 .panel {
   background: #000;
-  /* border-radius:6px; */
+  border-radius:3px;
   overflow:hidden;
-  border:solid 2px #000;
+  border:solid 4px #000;
 }
 video {
   object-fit: cover;

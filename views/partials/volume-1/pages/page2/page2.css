@@ -1,48 +1,37 @@
 @import url(./../../../comicMainPageLayout.css);
+@import url(../../../comicPageLayout4.css);
 
-@import url(../../../comicPageLayout2.css);
-
-
-/* the building is a mess */
+/* nova */
 .text-block-container.text-block-story-line-page2-1 {
     top: 4dvh;
-    left: 25dvw;
+    left: 20dvw;
 }
-/* ..it stinks...*/
+/* lee */
 .text-block-container.text-block-story-line-page2-2 {
-    top: 20dvh;
-    left: 30dvw;
-}
-/*...and the neighbours are... */
-.text-block-container.text-block-story-line-page2-3 {
-    top: 30dvh;
+    top: 4dvh;
     left: 45dvw;
+}
+/*rin*/
+.text-block-container.text-block-story-line-page2-3 {
+    top: 4dvh;
+    left: 70dvw;
 }
 
-/* ...proof that civilization is optional. */
+/*jax*/
 .text-block-container.text-block-story-line-page2-4 {
-    top:40dvh;
-    left:45dvw;
+    top: 4dvh;
+    left:93dvw;
 }
-/* Can’t blame them — <br /> when you’ve been stepped on long enough... */
-.text-block-container.text-block-story-line-page2-5 {
-    bottom: 12dvh;
-    left: 40dvw;
+.slideIn {
+    animation: slideIn 1s ease-in forwards;
 }
-/* ...you forget what standing up looks like. */
-.text-block-container.text-block-story-line-page2-6 {
-    bottom: 5dvh;
-    left: 45dvw;
-}
-/* NOVA */
-.text-block-container.text-block-story-line-page2-7 {
-    top: 10dvh;
-    left: 5dvw;
-}
-.page-layout-2 .panel-1a {
-   width:25dvw!important;
-}
-.panel-2a video{
-  
-  
+@keyframes slideIn {
+    0%{
+        opacity:0;
+     transform:translateX(-200px);
+    }
+    100% {
+        opacity:1;
+       transform:translateX(0);
+    }
 }
