@@ -35,6 +35,7 @@
   border-radius:3px;
   overflow:hidden;
   border:solid 4px #000;
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 video {
   object-fit: cover;

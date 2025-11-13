@@ -1,0 +1,27 @@
+@import url(./../../../comicMainPageLayout.css);
+
+@import url(../../../comicPageLayout5.css);
+
+.crossfade-container {
+  position: relative;
+
+  overflow: hidden;
+  /* Ensures images don't spill out */
+}
+
+.crossfade-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  /* Hidden by default */
+  transition: opacity 1s ease-in-out;
+  /* The magic for smooth fading */
+}
+
+.crossfade-image.active {
+  opacity: 1;
+  /* Visible when active */
+}

@@ -78,22 +78,57 @@ export async function init(container) {
     })
 
     const storylineBubbleSpeechBubble5 = new SpeechBubble(page, {
-        text: 'You we\'re right nova. there is power being re-routed to that wearhouse.',
+        text: 'You we\'re right nova. <br/>there is power being re-routed to <br/>that wearhouse.<br/> there is something down there.',
+        fill: 'rgba(255,255,255,0.6)',
+        stroke: '#000',
+        strokeWidth: 3,
+        tailPosition: 'top-right', // You can expand _generatePathD to use this
+        paddingX: "5px",
+        paddingY: "5px",
+        bottom: "5dvh",
+        left: "35dvw",
+        className: "speech-bubble-page4-5"
+    })
+
+    const storylineBubbleSpeechBubble6 = new SpeechBubble(page, {
+        text: 'Hello...what is going on here?',
         fill: 'rgba(255,255,255,0.6)',
         stroke: '#000',
         strokeWidth: 3,
         tailPosition: 'top-left', // You can expand _generatePathD to use this
         paddingX: "5px",
         paddingY: "5px",
-        bottom: "15dvh",
+        top: "25dvh",
         left: "45dvw",
-        className: "speech-bubble-page4-5"
+        className: "speech-bubble-page4-6"
+    })
+
+    const storylineBubbleSpeechBubble7 = new SpeechBubble(page, {
+        text: 'And where exactly did you find this<br/> life changing information again...Nova?',
+        fill: 'rgba(255,255,255,0.6)',
+        stroke: '#000',
+        strokeWidth: 3,
+        tailPosition: 'bottom-right', // You can expand _generatePathD to use this
+        paddingX: "5px",
+        paddingY: "5px",
+        bottom: "5dvh",
+        right: "5dvw",
+        className: "speech-bubble-page4-7"
     })
 
     const storylinePage3TextBlock1 = new TextBlock(textBlockStorylinePage3Contianer1, {
-        text: 'But... <br/>if everything goes <br/>according to plan, <br/>we may find <br/>outselves out of this <br/>hell hole, <br/>and living large.',
+        text: 'Because... <br/>if everything goes <br/>according to plan, <br/>we may find <br/>outselves a way out <br/>of this hell hole.',
         textColor: '#000',
         background: 'rgba(255, 255, 255, 0.9)', // Semi-transparent black background
+        borderColor: '#000',
+        borderwidth: 2,
+        padding: 15
+    })
+
+    const storylinePage3TextBlock2 = new TextBlock(textBlockStorylinePage3Contianer2, {
+        text: 'huh?...',
+        textColor: '#000',
+        background: 'rgba(214, 236, 11, 0.9)', // Semi-transparent black background
         borderColor: '#000',
         borderwidth: 2,
         padding: 15
@@ -106,49 +141,11 @@ export async function init(container) {
     await storylineBubbleSpeechBubble3.render();
     await storylineBubbleSpeechBubble4.render();
     await storylineBubbleSpeechBubble5.render();
-    //animateBottomPanel();
+    await storylineBubbleSpeechBubble6.render();
+    await storylineBubbleSpeechBubble7.render();
     storylinePage3TextBlock1.render();
-    //storylinePage3TextBlock2.render();
-    // const storylineIntroSpeechBubble1 = new SpeechBubble(speechBubbleStorylineIntroContianer1, {
-    //     text: 'Lila! I\'m back...',
-    //     fill: 'rgba(255,255,255,0.6)',
-    //     stroke: '#000',
-    //     strokeWidth: 3,
-    //     tailPosition: 'top-left', // You can expand _generatePathD to use this
-    //     paddingX: "5px",
-    //     paddingY: "5px"
-    // })
-
-    // const storylineIntroTextBlock1 = new TextBlock(textBlockStorylineIntroContianer1, {
-    //     text: 'The building is a mess...',
-    //     textColor: '#000',
-    //     background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
-    //     borderColor: 'white',
-    //     borderwidth: 2,
-    //     padding: 15
-    // })
-
-    // const storylineIntroTextBlock2 = new TextBlock(textBlockStorylineIntroContianer2, {
-    //     text: 'it stinks...',
-    //     textColor: '#000',
-    //     background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
-    //     borderColor: 'white',
-    //     borderwidth: 2,
-    //     padding: 15
-    // })
-
-    // const storylineIntroTextBlock3 = new TextBlock(textBlockStorylineIntroContianer3, {
-    //     text: '.',
-    //     textColor: '#000',
-    //     background: 'rgba(232, 185, 49, 0.9)', // Semi-transparent black background
-    //     borderColor: 'white',
-    //     borderwidth: 2,
-    //     padding: 15
-    // })
-    //
-    // storylineIntroTextBlock3.render();
-    // storylineIntroTextBlock1.render();
-    // storylineIntroTextBlock2.render()
+    storylinePage3TextBlock2.render();
+    
 }
 
 function enableMedia(videos) {

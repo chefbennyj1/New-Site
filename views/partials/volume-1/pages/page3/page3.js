@@ -28,7 +28,7 @@ export async function init(container) {
     //animateBottomPanel();
     const page = document.querySelector('.page3');
     const storylineSwatOfficerBubbleSpeechBubble1 = new SpeechBubble(page, {
-        text: 'Citizen! <br />return to your home!',
+        text: 'But, not for long. This slum\'s seen the last of me.',
         fill: 'rgba(255,255,255,0.6)',
         stroke: '#000',
         strokeWidth: 3,
@@ -78,7 +78,7 @@ export async function init(container) {
     })
 
     const storylineIntroTextBlock4 = new TextBlock(textBlockStorylineIntroContianer4, {
-        text: 'Proof that civilization is optional.',
+        text: 'just another reminder that survival\'s a full-time gig down here.',
         textColor: '#000',
         background: 'rgba(255, 255, 255, 0.9)', // Semi-transparent black background
         borderColor: '#000',
@@ -87,7 +87,7 @@ export async function init(container) {
     })
 
     const storylineIntroTextBlock5 = new TextBlock(textBlockStorylineIntroContianer5, {
-        text: 'Can’t blame them — <br /> when you’ve been stepped on long enough...',
+        text: 'When you’ve been stepped on long enough...',
         textColor: '#000',
         background: 'rgba(255, 255, 255, 0.9)', // Semi-transparent black background
         borderColor: '#000',
@@ -123,19 +123,7 @@ export async function init(container) {
     //storylineIntroTextBlock7.render();
 
     //Timeline
-    let video1 = document.querySelector('#page3-video1');
-    let video2 = document.querySelector('#page3-video2');
-    let video3 = document.querySelector('#page3-video3');
-    let speechbubble1 = document.querySelector('.speech-bubble-page3-1');
-
-    video3.addEventListener('timeupdate', () => {
-        if(video3.currentTime > 5) {
-            speechbubble1.style.visibility  ="hidden";            
-        } 
-        if(video3.currentTime < 5) {
-             speechbubble1.style.visibility  ="visible";
-        }
-    })
+   
 }
 
 function enableMedia(videos) {
