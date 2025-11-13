@@ -40,7 +40,7 @@ export async function init(container) {
             tailPosition: 'top-right', // You can expand _generatePathD to use this
             paddingX: "5px",
             paddingY: "5px",
-            top: "30dvh",
+            top: "33dvh",
             left: "30dvw",
             className: "speech-bubble-page5-2"
         })
@@ -59,20 +59,20 @@ export async function init(container) {
         })
 
         const storylineBubbleSpeechBubble4 = new SpeechBubble(page, {
-            text: 'If there are <br /> defunct servers there that we can hijack<br/> Lee can set up a hash farm in minutes<br/> probably worth it.',
+            text: 'defunct servers? <br/> If they are there, <br />can you set up a hash farm, Lee?',
             fill: 'rgba(255,255,255,0.6)',
             stroke: '#000',
             strokeWidth: 3,
             tailPosition: 'top-right', // You can expand _generatePathD to use this
             paddingX: "5px",
             paddingY: "5px",
-            bottom: "15dvh",
-            left: "30dvw",
+            bottom: "5dvh",
+            right: "35dvw",
             className: "speech-bubble-page5-4"
         })
-
+//,
         const storylineBubbleSpeechBubble5 = new SpeechBubble(page, {
-            text: 'I\'m done living in this <br/>shit-hole Jax! <br/> I want out!',
+            text: "I can hack anything...",
             fill: 'rgba(255,255,255,0.6)',
             stroke: '#000',
             strokeWidth: 3,
@@ -80,12 +80,12 @@ export async function init(container) {
             paddingX: "5px",
             paddingY: "5px",
             bottom: "5dvh",
-            right: "30dvw",
+            right: "5dvw",
             className: "speech-bubble-page5-5"
         })
 
         const storylineBubbleSpeechBubble6 = new SpeechBubble(page, {
-            text: 'We can do this, <br/> and no one will be the wiser.',
+            text: 'I\'m done living in this <br/>shit-hole Jax! <br/> this is our chance<br /> to get out!',
             fill: 'rgba(255,255,255,0.6)',
             stroke: '#000',
             strokeWidth: 3,
@@ -93,7 +93,7 @@ export async function init(container) {
             paddingX: "5px",
             paddingY: "5px",
             bottom: "5dvh",
-            right: "10dvw",
+            left: "25dvw",
             className: "speech-bubble-page5-6"
         })
 

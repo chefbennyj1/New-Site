@@ -27,16 +27,25 @@ export async function init(container) {
 
     //animateBottomPanel();
     const page = document.querySelector('.page3');
-    const storylineSwatOfficerBubbleSpeechBubble1 = new SpeechBubble(page, {
-        text: 'But, not for long. This slum\'s seen the last of me.',
+
+    const panel1 = page.querySelector('.panel-1a');
+    const panel2 = page.querySelector('.panel-1b');
+    const panel3 = page.querySelector('.panel-1c');
+    const panel4 = page.querySelector('.panel-2a');
+    const panel5 = page.querySelector('.panel-2b');
+    const panel6 = page.querySelector('.panel-2c');
+    const panel7 = page.querySelector('.panel-2d');
+
+    const storylineBubbleSpeechBubble1 = new SpeechBubble(panel3, {
+        text: 'But, not for long. <br/>This slum\'s seen the last of me.',
         fill: 'rgba(255,255,255,0.6)',
         stroke: '#000',
         strokeWidth: 3,
         tailPosition: 'top-left', // You can expand _generatePathD to use this
         paddingX: "5px",
         paddingY: "5px",
-        top: "35dvh",
-        right: "5dvw",
+        top: "50%",
+        right: "5%",
         className: "speech-bubble-page3-1"
     })
 
@@ -113,7 +122,7 @@ export async function init(container) {
     // })
 
 
-    await storylineSwatOfficerBubbleSpeechBubble1.render();
+    await storylineBubbleSpeechBubble1.render();
     storylineIntroTextBlock1.render();
     storylineIntroTextBlock2.render();
     storylineIntroTextBlock3.render();

@@ -36,16 +36,20 @@
   overflow:hidden;
   border:solid 4px #000;
   box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5);
+  position:relative;
 }
 video {
   object-fit: cover;
   height:105%;
   width:105%;
+  position: absolute;
 }
 img {
   width:109%;
   height:109%;
   object-fit: cover;
+  top:0;
+  position:absolute;
 }
 
 /* .speech-bubble-container {

@@ -25,8 +25,8 @@
 }
 
 /* Bottom row */
-.page-layout-3  .panel-2a { grid-row: 3 / 5; grid-column: 3 / 5; } /* spans bottom two*/
-.page-layout-3  .panel-2b { grid-row: 3 / 5; grid-column: 5 / 6; }
+.page-layout-3  .panel-2a { grid-row: 3 / 5; grid-column: 3 / 4; } /* spans bottom two*/
+.page-layout-3  .panel-2b { grid-row: 3 / 5; grid-column: 4 / 6; }
 .page-layout-3  .panel-2c { grid-row: 3 / 5; grid-column: 6 / 8; }
 
 

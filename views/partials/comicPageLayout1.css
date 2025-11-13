@@ -4,13 +4,7 @@
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
 }
-.page-layout-1 .split-panel {
-    
-    display: flex;
-    justify-content: space-between;
-    background: #fff;
-    position: relative;
-}
+
 .page-layout-1 .panel.panel-1a { 
   grid-column: 1 / 4;
     grid-row: 1 / 4; 
@@ -21,8 +15,7 @@
   grid-column: 4 / 7;
     grid-row: 1 / 4;
     /* clip-path: polygon(300px 0, 100% 0, 100% 100%, 0% 100%);   */
-    right: 0;
-    bottom:-15%;
+  
     
 }
 /* .panel.split-left,
