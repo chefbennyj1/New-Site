@@ -18,7 +18,13 @@ export async function init(container) {
     });
     console.log(`loading ${container.id}`)
     const page = document.querySelector('.page5');
-    const storylineBubbleSpeechBubble1 = new SpeechBubble(page, {
+    const panel1 = page.querySelector('.panel-1a');
+    const panel2 = page.querySelector('.panel-1b');
+    const panel3 = page.querySelector('.panel-1c');
+    const panel4 = page.querySelector('.panel-2a');
+    const panel5 = page.querySelector('.panel-2b');
+    const panel6 = page.querySelector('.panel-2c');
+    const storylineBubbleSpeechBubble1 = new SpeechBubble(panel1, {
             text: 'After all, we wouldn\'t want to <br/>get all the way there to find out <br/>we were chasing ghosts.',
             fill: 'rgba(255,255,255,0.6)',
             stroke: '#000',
@@ -26,26 +32,26 @@ export async function init(container) {
             tailPosition: 'top-right', // You can expand _generatePathD to use this
             paddingX: "5px",
             paddingY: "5px",
-            top: "50dvh",
-            left: "5dvw",
+            top: "50%",
+            left: "2%",
             className: "speech-bubble-page5-1"
         })
 //
 
-        const storylineBubbleSpeechBubble2 = new SpeechBubble(page, {
-            text: 'I didn\'t ask anyone, Jax.<br/> I asked the system.',
+        const storylineBubbleSpeechBubble2 = new SpeechBubble(panel2, {
+            text: 'I didn\'t just find this, Jax.<br/> I got bored and hack the city electrical grid.',
             fill: 'rgba(255,255,255,0.6)',
             stroke: '#000',
             strokeWidth: 3,
             tailPosition: 'top-right', // You can expand _generatePathD to use this
             paddingX: "5px",
             paddingY: "5px",
-            top: "33dvh",
-            left: "30dvw",
+            bottom: "2%",
+            left: "1%",
             className: "speech-bubble-page5-2"
         })
 
-        const storylineBubbleSpeechBubble3 = new SpeechBubble(page, {
+        const storylineBubbleSpeechBubble3 = new SpeechBubble(panel3, {
             text: 'Oh, there is something there alright. <br/>I\'ve seen the power <br/>draw on the grid.',
             fill: 'rgba(255,255,255,0.6)',
             stroke: '#000',
@@ -53,12 +59,12 @@ export async function init(container) {
             tailPosition: 'top-right', // You can expand _generatePathD to use this
             paddingX: "5px",
             paddingY: "5px",
-            top: "25dvh",
-            right: "20dvw",
+            bottom: "10%",
+            left: "5%",
             className: "speech-bubble-page5-3"
         })
 
-        const storylineBubbleSpeechBubble4 = new SpeechBubble(page, {
+        const storylineBubbleSpeechBubble4 = new SpeechBubble(panel5, {
             text: 'defunct servers? <br/> If they are there, <br />can you set up a hash farm, Lee?',
             fill: 'rgba(255,255,255,0.6)',
             stroke: '#000',
@@ -66,12 +72,12 @@ export async function init(container) {
             tailPosition: 'top-right', // You can expand _generatePathD to use this
             paddingX: "5px",
             paddingY: "5px",
-            bottom: "5dvh",
-            right: "35dvw",
+            bottom: "5%",
+            right: "5%",
             className: "speech-bubble-page5-4"
         })
 //,
-        const storylineBubbleSpeechBubble5 = new SpeechBubble(page, {
+        const storylineBubbleSpeechBubble5 = new SpeechBubble(panel6, {
             text: "I can hack anything...",
             fill: 'rgba(255,255,255,0.6)',
             stroke: '#000',
@@ -79,21 +85,19 @@ export async function init(container) {
             tailPosition: 'top-left', // You can expand _generatePathD to use this
             paddingX: "5px",
             paddingY: "5px",
-            bottom: "5dvh",
-            right: "5dvw",
+            bottom: "5%",
+            right: "5%",
             className: "speech-bubble-page5-5"
         })
 
-        const storylineBubbleSpeechBubble6 = new SpeechBubble(page, {
-            text: 'I\'m done living in this <br/>shit-hole Jax! <br/> this is our chance<br /> to get out!',
+        const storylineBubbleSpeechBubble6 = new SpeechBubble(panel4, {
+            text: 'This is our chance!<br />A fresh start.',
             fill: 'rgba(255,255,255,0.6)',
             stroke: '#000',
             strokeWidth: 3,
             tailPosition: 'top-left', // You can expand _generatePathD to use this
-            paddingX: "5px",
-            paddingY: "5px",
-            bottom: "5dvh",
-            left: "25dvw",
+            bottom: "1%",
+            left: "-15%",
             className: "speech-bubble-page5-6"
         })
 

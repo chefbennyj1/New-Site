@@ -14,6 +14,9 @@ class SpeechBubble {
       left: null,
       right: null,
       className: null,
+      tailLength: 20, // Default tail length
+      tailPositionX: 0.5, // Default horizontal tail position (0-1)
+      tailType: 'straight', // 'straight', 'zigzag', or 'lightning'
       ...options
     };
 
@@ -33,10 +36,22 @@ class SpeechBubble {
   }
 
   _generatePathD(width = 280, height = 80) {
-    // This is a simplified path. For more complex tail positions, 
-    // this method would need to dynamically generate the 'd' attribute.
-    // For now, it's the original path.
-    return `M30 10 h${width} a20,20 0 0 1 20,20 v${height} a20,20 0 0 1 -20,20 h-${width/2} l-10,20 v-20 h-${width/2-20} a20,20 0 0 1 -20,-20 v-${height} a20,20 0 0 1 20,-20 z`;
+    const tailPosition = width * this.options.tailPositionX;
+    let tailPath;
+
+    switch (this.options.tailType) {
+      case 'zigzag':
+        tailPath = `l -5,${this.options.tailLength / 4} l 5,${this.options.tailLength / 4} l -5,${this.options.tailLength / 4} l 5,${this.options.tailLength / 4} v -${this.options.tailLength}`;
+        break;
+      case 'lightning':
+        tailPath = `l -8,${this.options.tailLength / 2} l 16,0 l -8,${this.options.tailLength / 2} v -${this.options.tailLength}`;
+        break;
+      default: // straight
+        tailPath = `l -10,${this.options.tailLength} v -${this.options.tailLength}`;
+        break;
+    }
+
+    return `M30 10 h${width} a20,20 0 0 1 20,20 v${height} a20,20 0 0 1 -20,20 h-${width - tailPosition} ${tailPath} h-${tailPosition - 20} a20,20 0 0 1 -20,-20 v-${height} a20,20 0 0 1 20,-20 z`;
   }
 
   _getBubbleHtml() {
@@ -89,8 +104,8 @@ class SpeechBubble {
     const newWidth = this.textElement.scrollWidth;
     const newHeight = this.textElement.scrollHeight;
 
-    const paddingX = 70; // 20px left + 20px right
-    const paddingY = 80; // 20px top + 40px bottom + 20px for tail area
+    const paddingX = 80; // 20px left + 20px right + 10px for tail padding
+    const paddingY = 60 + this.options.tailLength; // 20px top + 40px bottom + tailLength for tail area
 
     this.svgElement.setAttribute('width', newWidth + paddingX);
     this.svgElement.setAttribute('height', newHeight + paddingY);
